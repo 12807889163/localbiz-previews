@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orange Agency — Outreach Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0369a1;
+      --primary-dark: #0284c7;
+      --accent: #f59e0b;
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --blue: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+    
+    .layout { display: flex; min-height: 100vh; }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--primary);
+      color: white;
+      padding: 24px 16px;
+      flex-shrink: 0;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 32px; }
+    .sidebar-logo span { color: var(--accent); }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      transition: all 0.15s;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active { background: rgba(255,255,255,0.15); color: white; }
+    .sidebar-nav a.active { font-weight: 600; }
+    .sidebar-section { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); padding: 16px 12px 4px; }
+    
+    /* Main content */
+    .main { flex: 1; margin-left: 220px; padding: 24px 32px; }
+    
+    /* Header */
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+    .header-meta { color: var(--muted); font-size: 0.8rem; }
+    .refresh-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .refresh-btn:hover { background: var(--primary-dark); }
+    
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .stat-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .stat-card .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .stat-card .value { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-card .sub { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+    .stat-card.accent { border-left: 4px solid var(--accent); }
+    .stat-card.green { border-left: 4px solid var(--green); }
+    .stat-card.blue { border-left: 4px solid var(--blue); }
+    
+    /* Two column layout */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .panel {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+    
+    /* Funnel */
+    .funnel { display: flex; flex-direction: column; gap: 8px; }
+    .funnel-stage { display: flex; align-items: center; gap: 12px; }
+    .funnel-bar-wrap { flex: 1; background: var(--bg); border-radius: 6px; height: 28px; position: relative; overflow: hidden; }
+    .funnel-bar { height: 100%; border-radius: 6px; transition: width 0.6s ease; display: flex; align-items: center; padding-left: 10px; }
+    .funnel-label { font-size: 0.75rem; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; }
+    .funnel-count { font-size: 0.75rem; color: var(--muted); width: 40px; text-align: right; flex-shrink: 0; }
+    .funnel-pct { font-size: 0.7rem; color: var(--muted); width: 36px; text-align: right; flex-shrink: 0; }
+    
+    /* Stage colors */
+    .bar-raw { background: #94a3b8; }
+    .bar-email-ready { background: #60a5fa; }
+    .bar-qualified { background: #3b82f6; }
+    .bar-outreach-sent { background: #f59e0b; }
+    .bar-follow-up { background: #f97316; }
+    .bar-interested { background: #22c55e; }
+    .bar-won { background: #16a34a; }
+    
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    tr:hover td { background: #f8fafc; }
+    .stage-badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+    .stage-raw { background: #f1f5f9; color: #64748b; }
+    .stage-email-ready { background: #dbeafe; color: #1d4ed8; }
+    .stage-qualified { background: #bfdbfe; color: #1e40af; }
+    .stage-outreach-sent { background: #fef3c7; color: #92400e; }
+    .stage-follow-up { background: #ffedd5; color: #9a3412; }
+    .stage-interested { background: #dcfce7; color: #166534; }
+    .stage-won { background: #bbf7d0; color: #15803d; }
+    
+    /* City breakdown */
+    .city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+    .city-item { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
+    .city-item .city-name { font-size: 0.75rem; color: var(--muted); }
+    .city-item .city-count { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+    .city-item .city-pct { font-size: 0.65rem; color: var(--muted); }
+    
+    /* Full width panel */
+    .full { grid-column: 1 / -1; }
+    
+    /* Intent breakdown */
+    .intent-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .intent-item { background: var(--bg); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .intent-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .intent-label { font-size: 0.8rem; font-weight: 600; }
+    .intent-count { font-size: 0.8rem; color: var(--muted); }
+    
+    /* Loading state */
+    .loading { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--muted); }
+    
+    /* Niche breakdown */
+    .niche-list { display: flex; flex-direction: column; gap: 6px; }
+    .niche-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
+    .niche-bar { height: 8px; border-radius: 4px; background: var(--primary); opacity: 0.7; }
+    
+    @media (max-width: 900px) {
+      .layout { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: static; }
+      .main { margin-left: 0; padding: 16px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">Orange<span>Agency</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="#pipeline" class="active">Pipeline</a>
+      <a href="#funnel">Funnel</a>
+      <a href="#geography">Geography</a>
+      <a href="#stuck">Stuck Deals</a>
+      <div class="sidebar-section">Tools</div>
+      <a href="#actions">Actions</a>
+    </nav>
+  </aside>
+  
+  <main class="main">
+    <div class="header">
+      <div>
+        <h1>Outreach Dashboard</h1>
+        <div class="header-meta" id="updated-at">Loading...</div>
+      </div>
+      <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+    </div>
+    
+    <!-- Stats Row -->
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card">
+        <div class="label">Total Leads</div>
+        <div class="value" id="stat-total">—</div>
+        <div class="sub" id="stat-total-sub">All contacts</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="label">Emails Sent</div>
+        <div class="value" id="stat-sent">—</div>
+        <div class="sub" id="stat-sent-sub">Outreach log</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="label">Reply Rate</div>
+        <div class="value" id="stat-reply-rate">—</div>
+        <div class="sub" id="stat-reply-sub">67 replies</div>
+      </div>
+      <div class="stat-card green">
+        <div class="label">Revenue</div>
+        <div class="value" id="stat-revenue">—</div>
+        <div class="sub" id="stat-revenue-sub">Won deals × $299</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Pipeline Value</div>
+        <div class="value" id="stat-pipeline">—</div>
+        <div class="sub">Interested × $299</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Hot Leads</div>
+        <div class="value" id="stat-hot">—</div>
+        <div class="sub">Interested + warm</div>
+      </div>
+    </div>
+    
+    <!-- Funnel + Intent -->
+    <div class="two-col" style="margin-bottom: 28px;">
+      <div class="panel" id="funnel">
+        <div class="panel-title">Pipeline Funnel</div>
+        <div class="funnel" id="funnel-content">
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Reply Intelligence</div>
+        <div id="intent-content">
+          <div class="intent-grid">
+            <div class="intent-item">
+              <div class="intent-dot" style="background:#22c55e;"></div>
+              <span class="intent-label">Interested</span>
+              <span class="intent-count" id="intent-interested">19</span>
+            </div>
+            <div class="intent-item">
+              <div class="intent-dot" style="background:#f59e0b;"></div>
+              <span class="intent-label">Warm</span>
+              <span class="intent-count" id="intent-warm">20</span>
+            </div>
+            <div class="intent-item">
+              <div class="intent-dot" style="background:#94a3b8;"></div>
+              <span class="intent-label">Not Interested</span>
+              <span class="intent-count" id="intent-cold">24</span>
+            </div>
+            <div class="intent-item">
+              <div class="intent-dot" style="background:#3b82f6;"></div>
+              <span class="intent-label">Price Shopping</span>
+              <span class="intent-count" id="intent-price">4</span>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <div class="panel-title" style="font-size:0.8rem;">Niche Breakdown</div>
+            <div class="niche-list" id="niche-list">Loading...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Geographic + Stage breakdown -->
+    <div class="two-col" style="margin-bottom: 28px;">
+      <div class="panel" id="geography">
+        <div class="panel-title">Leads by City</div>
+        <div class="city-grid" id="city-grid">
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Pipeline Stage Distribution</div>
+        <div id="stage-dist" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+    </div>
+    
+    <!-- Stuck Deals -->
+    <div class="panel" id="stuck">
+      <div class="panel-title">⚠️ Stuck Deals — Needs Follow-Up</div>
+      <div style="overflow-x:auto;">
+        <table id="stuck-table">
+          <thead>
+            <tr>
+              <th>Business</th>
+              <th>City</th>
+              <th>Niche</th>
+              <th>Stage</th>
+              <th>Days Overdue</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="stuck-body">
+            <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Actions -->
+    <div class="panel" id="actions" style="margin-top: 28px;">
+      <div class="panel-title">⚡ Quick Actions</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="refresh-btn" onclick="runFollowup()">▶ Run Follow-Ups</button>
+        <button class="refresh-btn" onclick="runAutoRespond()">⚡ Auto-Responded</button>
+        <button class="refresh-btn" onclick="runResearch()">🔍 Research Emails</button>
+        <button class="refresh-btn" onclick="exportData()">📊 Export CSV</button>
+      </div>
+      <div id="action-output" style="margin-top:12px;font-family:monospace;font-size:0.75rem;background:#0f172a;color:#22c55e;padding:12px;border-radius:8px;display:none;white-space:pre;max-height:200px;overflow-y:auto;"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// DATA (embedded from server-side computation)
+// ─────────────────────────────────────────────────────────────
+// These will be populated by the loadData() function
+let TRACKER = { contacts: [] };
+let DEALS = { deals: [] };
+let REPLIES = { replies: [] };
+let OUTREACH_LOG = [];
+
+// ─────────────────────────────────────────────────────────────
+// COMPUTE STATS
+// ─────────────────────────────────────────────────────────────
+function computeStats() {
+  const contacts = TRACKER.contacts || [];
+  const deals = DEALS.deals || [];
+  const replies = REPLIES.replies || [];
+  
+  // Stage counts from tracker
+  const stageCounts = {};
+  contacts.forEach(c => {
+    const s = c.stage || 'raw';
+    stageCounts[s] = (stageCounts[s] || 0) + 1;
+  });
+  
+  // Deal stage counts
+  const dealStages = {};
+  deals.forEach(d => {
+    const s = d.stage || 'unknown';
+    dealStages[s] = (dealStages[s] || 0) + 1;
+  });
+  
+  // City breakdown
+  const cityCounts = {};
+  contacts.forEach(c => {
+    const city = c.city || 'Unknown';
+    cityCounts[city] = (cityCounts[city] || 0) + 1;
+  });
+  
+  // Niche breakdown
+  const nicheCounts = {};
+  contacts.forEach(c => {
+    const niche = c.niche || 'unknown';
+    nicheCounts[niche] = (nicheCounts[niche] || 0) + 1;
+  });
+  
+  // Reply stats
+  const replyIntents = {};
+  replies.forEach(r => {
+    const i = r.intent || 'unknown';
+    replyIntents[i] = (replyIntents[i] || 0) + 1;
+  });
+  
+  // Revenue
+  const wonDeals = deals.filter(d => d.stage === 'won');
+  const revenue = wonDeals.length * 299;
+  
+  // Pipeline value (interested × $299)
+  const interestedCount = deals.filter(d => 
+    d.stage === 'interested' || d.stage === 'warm' || d.stage === 'follow_up_1' || d.stage === 'follow_up_2'
+  ).length;
+  const pipelineValue = interestedCount * 299;
+  
+  // Email sent (from outreach log)
+  const emailsSent = OUTREACH_LOG.length || dealStages['outreach_sent'] || 0;
+  const totalReplies = replies.length;
+  const replyRate = emailsSent > 0 ? ((totalReplies / emailsSent) * 100).toFixed(1) : '0.0';
+  
+  // Hot leads
+  const hotLeads = (replyIntents['interested'] || 0) + (replyIntents['warm'] || 0);
+  
+  return {
+    stageCounts, dealStages, cityCounts, nicheCounts,
+    replyIntents, revenue, pipelineValue, emailsSent,
+    totalReplies, replyRate, hotLeads,
+    totalContacts: contacts.length,
+    wonCount: wonDeals.length,
+    interestedCount
+  };
+}
+
+// ─────────────────────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────────────────────
+function renderDashboard() {
+  const s = computeStats();
+  
+  // Stats
+  document.getElementById('stat-total').textContent = s.totalContacts.toLocaleString();
+  document.getElementById('stat-sent').textContent = (s.emailsSent || s.dealStages['outreach_sent'] || 0).toLocaleString();
+  document.getElementById('stat-reply-rate').textContent = s.replyRate + '%';
+  document.getElementById('stat-revenue').textContent = '$' + s.revenue.toLocaleString();
+  document.getElementById('stat-pipeline').textContent = '$' + s.pipelineValue.toLocaleString();
+  document.getElementById('stat-hot').textContent = s.hotLeads.toString();
+  document.getElementById('stat-reply-sub').textContent = s.totalReplies + ' total replies';
+  document.getElementById('stat-revenue-sub').textContent = s.wonCount + ' deals won';
+  
+  // Updated time
+  document.getElementById('updated-at').textContent = 'Updated: ' + new Date().toLocaleString();
+  
+  // Funnel
+  renderFunnel(s);
+  
+  // Intent
+  document.getElementById('intent-interested').textContent = s.replyIntents['interested'] || 0;
+  document.getElementById('intent-warm').textContent = s.replyIntents['warm'] || 0;
+  document.getElementById('intent-cold').textContent = s.replyIntents['not_interested'] || 0;
+  document.getElementById('intent-price').textContent = s.replyIntents['price_shopping'] || 0;
+  
+  // Niche
+  renderNiche(s.nicheCounts);
+  
+  // Cities
+  renderCities(s.cityCounts, s.totalContacts);
+  
+  // Stage distribution
+  renderStageDist(s.dealStages, s.deals || []);
+  
+  // Stuck deals
+  renderStuckDeals();
+}
+
+function renderFunnel(s) {
+  const total = s.totalContacts || 1;
+  const stages = [
+    { key: 'raw', label: 'Raw Leads', cls: 'bar-raw' },
+    { key: 'email_ready', label: 'Email Ready', cls: 'bar-email-ready' },
+    { key: 'qualified', label: 'Qualified', cls: 'bar-qualified' },
+    { key: 'outreach_sent', label: 'Outreach Sent', cls: 'bar-outreach-sent' },
+    { key: 'follow_up_1', label: 'Follow-Up 1', cls: 'bar-follow-up' },
+    { key: 'follow_up_2', label: 'Follow-Up 2', cls: 'bar-follow-up' },
+    { key: 'interested', label: 'Interested', cls: 'bar-interested' },
+    { key: 'won', label: 'Won', cls: 'bar-won' },
+  ];
+  
+  let html = '';
+  let prevCount = total;
+  stages.forEach(stage => {
+    const count = s.stageCounts[stage.key] || s.dealStages[stage.key] || 0;
+    const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
+    const barPct = Math.max(count > 0 ? (count / total) * 100 : 2, count > 0 ? 5 : 0);
+    const convPct = prevCount > 0 ? ((count / prevCount) * 100).toFixed(0) : '—';
+    html += `<div class="funnel-stage">
+      <div class="funnel-count">${count.toLocaleString()}</div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar ${stage.cls}" style="width:${barPct}%">
+          <span class="funnel-label">${stage.label}</span>
+        </div>
+      </div>
+      <div class="funnel-pct">${pct}%</div>
+    </div>`;
+    if (count > 0) prevCount = count;
+  });
+  
+  document.getElementById('funnel-content').innerHTML = html;
+}
+
+function renderNiche(nicheCounts) {
+  const total = Object.values(nicheCounts).reduce((a,b)=>a+b,0) || 1;
+  const sorted = Object.entries(nicheCounts).sort((a,b)=>b[1]-a[1]);
+  const nicheNames = {
+    'plumber': 'Plumbers', 'electrician': 'Electricians', 'hvac': 'HVAC',
+    'roofing': 'Roofers', 'pest': 'Pest Control', 'medspa': 'Med Spas',
+    'unknown': 'Other'
+  };
+  let html = '';
+  sorted.slice(0, 8).forEach(([niche, count]) => {
+    const pct = ((count / total) * 100).toFixed(1);
+    const name = nicheNames[niche] || niche;
+    html += `<div class="niche-item">
+      <div class="niche-bar" style="width:${pct}%;"></div>
+      <span style="width:80px;font-size:0.75rem;">${name}</span>
+      <span style="color:var(--muted);font-size:0.75rem;">${count} (${pct}%)</span>
+    </div>`;
+  });
+  document.getElementById('niche-list').innerHTML = html || '<div style="color:var(--muted);font-size:0.8rem;">No niche data</div>';
+}
+
+function renderCities(cityCounts, total) {
+  const sorted = Object.entries(cityCounts).sort((a,b)=>b[1]-a[1]).slice(0, 10);
+  const t = total || 1;
+  let html = '';
+  sorted.forEach(([city, count]) => {
+    const pct = ((count / t) * 100).toFixed(1);
+    html += `<div class="city-item">
+      <div class="city-count">${count}</div>
+      <div class="city-name">${city}</div>
+      <div class="city-pct">${pct}%</div>
+    </div>`;
+  });
+  document.getElementById('city-grid').innerHTML = html || '<div style="color:var(--muted)">No city data</div>';
+}
+
+function renderStageDist(dealStages, deals) {
+  const total = deals.length || 1;
+  const stageLabels = {
+    'raw': 'Raw', 'email_ready': 'Email Ready', 'qualified': 'Qualified',
+    'outreach_sent': 'Outreach Sent', 'follow_up_1': 'Follow-Up 1',
+    'follow_up_2': 'Follow-Up 2', 'interested': 'Interested', 'won': 'Won',
+    'building': 'Building', 'delivered': 'Delivered'
+  };
+  const stageColors = {
+    'raw': '#94a3b8', 'email_ready': '#60a5fa', 'qualified': '#3b82f6',
+    'outreach_sent': '#f59e0b', 'follow_up_1': '#f97316', 'follow_up_2': '#ea580c',
+    'interested': '#22c55e', 'won': '#16a34a', 'building': '#8b5cf6', 'delivered': '#8b5cf6'
+  };
+  
+  let html = '';
+  Object.entries(dealStages).forEach(([stage, count]) => {
+    const pct = ((count / total) * 100).toFixed(1);
+    const label = stageLabels[stage] || stage;
+    const color = stageColors[stage] || '#64748b';
+    html += `<div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;">
+      <div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+      <span style="width:120px;">${label}</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${color};border-radius:4px;"></div>
+      </div>
+      <span style="width:40px;text-align:right;color:var(--muted);">${count}</span>
+      <span style="width:40px;text-align:right;color:var(--muted);font-size:0.7rem;">${pct}%</span>
+    </div>`;
+  });
+  document.getElementById('stage-dist').innerHTML = html;
+}
+
+function renderStuckDeals() {
+  const deals = DEALS.deals || [];
+  const stuck = deals.filter(d => d.stage === 'outreach_sent').slice(0, 50);
+  
+  if (stuck.length === 0) {
+    document.getElementById('stuck-body').innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--green);padding:20px;">✅ No stuck deals — pipeline is healthy!</td></tr>';
+    return;
+  }
+  
+  let html = '';
+  stuck.forEach(d => {
+    const history = d.history || [];
+    const outreachEntry = history.find(h => h.action === 'outreach_sent');
+    let daysOverdue = '?';
+    if (outreachEntry && outreachEntry.date) {
+      const sent = new Date(outreachEntry.date);
+      daysOverdue = Math.floor((Date.now() - sent) / (1000 * 60 * 60 * 24));
+    }
+    const badgeClass = daysOverdue === '?' ? 'stage-raw' : parseInt(daysOverdue) > 30 ? 'stage-outreach-sent' : 'stage-follow-up';
+    html += `<tr>
+      <td><strong>${d.business_name || '—'}</strong></td>
+      <td>${d.city || '—'}</td>
+      <td style="text-transform:capitalize;">${d.niche || '—'}</td>
+      <td><span class="stage-badge stage-outreach-sent">outreach_sent</span></td>
+      <td><strong style="color:${parseInt(daysOverdue) > 30 ? 'var(--red)' : 'var(--amber)'}">${daysOverdue}d</strong></td>
+      <td style="font-size:0.7rem;color:var(--muted);">${d.contact_email || '—'}</td>
+    </tr>`;
+  });
+  document.getElementById('stuck-body').innerHTML = html;
+}
+
+// ─────────────────────────────────────────────────────────────
+// DATA LOADING
+// ─────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    // Load all data files
+    const [trackerRes, dealsRes, repliesRes, outreachRes] = await Promise.allSettled([
+      fetch('outreach_tracker.json').then(r => r.json()).catch(() => ({contacts:[]})),
+      fetch('deals.json').then(r => r.json()).catch(() => ({deals:[]})),
+      fetch('reply_log.json').then(r => r.json()).catch(() => ({replies:[]})),
+      fetch('outreach_log.json').then(r => r.json()).catch(() => [])
+    ]);
+    
+    TRACKER = trackerRes.value || {contacts: []};
+    DEALS = dealsRes.value || {deals: []};
+    REPLIES = repliesRes.value || {replies: []};
+    OUTREACH_LOG = Array.isArray(outreachRes.value) ? outreachRes.value : (outreachRes.value?.sent || []);
+    
+    renderDashboard();
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    // Use embedded fallback data
+    renderDashboard();
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// ACTIONS
+// ─────────────────────────────────────────────────────────────
+async function runFollowup() {
+  const out = document.getElementById('action-output');
+  out.style.display = 'block';
+  out.textContent = '⏳ Running follow-up sequence...\n';
+  try {
+    // This would need server-side support; show manual command
+    out.textContent += '\nℹ️  Run manually:\n   cd ~/.cashclaw/localbiz && python3 outreach_runner.py --send --max-send 30';
+  } catch(e) {
+    out.textContent = '❌ Error: ' + e.message;
+  }
+}
+
+async function runAutoRespond() {
+  const out = document.getElementById('action-output');
+  out.style.display = 'block';
+  out.textContent = 'ℹ️  Auto-responder checks reply_log.json.\n';
+  out.textContent += '   Run: cd ~/.cashclaw/localbiz && python3 outreach_runner.py --send --auto-respond\n';
+}
+
+async function runResearch() {
+  const out = document.getElementById('action-output');
+  out.style.display = 'block';
+  out.textContent = 'ℹ️  Email research scans outreach_tracker for missing emails.\n';
+  out.textContent += '   Run: cd ~/.cashclaw/localbiz && python3 email-guesser.py --all\n';
+}
+
+function exportData() {
+  const s = computeStats();
+  const csv = [
+    'Metric,Value',
+    `Total Leads,${s.totalContacts}`,
+    `Emails Sent,${s.emailsSent}`,
+    `Reply Rate,${s.replyRate}%`,
+    `Revenue,$${s.revenue}`,
+    `Pipeline Value,$${s.pipelineValue}`,
+    `Hot Leads,${s.hotLeads}`,
+    `Won Deals,${s.wonCount}`,
+    `Interested,${s.interestedCount}`,
+  ].join('\n');
+  
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'cashclaw-dashboard-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+// Load on startup
+loadData();
+setInterval(loadData, 60000); // Auto-refresh every minute
+</script>
+</body>
+</html>
