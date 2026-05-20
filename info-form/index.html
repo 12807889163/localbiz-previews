@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Questionnaire — Orange Agency</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #334155; line-height: 1.6; }
+    .container { max-width: 680px; margin: 48px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+    .header { background: linear-gradient(135deg, #0ea5e9, #0369a1); padding: 40px 48px; text-align: center; }
+    .header h1 { color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .header p { color: rgba(255,255,255,0.85); font-size: 15px; }
+    .form-body { padding: 40px 48px; }
+    .intro { background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 32px; font-size: 14px; color: #0369a1; }
+    .intro strong { display: block; font-size: 15px; margin-bottom: 4px; }
+    .field { margin-bottom: 24px; }
+    label { display: block; font-weight: 600; font-size: 14px; color: #0f172a; margin-bottom: 6px; }
+    label span { font-weight: 400; color: #94a3b8; font-size: 13px; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width: 100%; padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 15px; color: #0f172a;
+      transition: border-color 0.2s; background: #fff;
+    }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.12); }
+    textarea { resize: vertical; min-height: 90px; }
+    .prefilled { background: #f8fafc; border-color: #cbd5e1; }
+    .upload-area { border: 2px dashed #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; background: #fafafa; }
+    .upload-area:hover { border-color: #0ea5e9; background: #f0f9ff; }
+    .upload-area p { font-size: 14px; color: #64748b; }
+    .upload-area input { margin-top: 8px; }
+    .checkbox-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .checkbox-item { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+    .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: #0ea5e9; }
+    .checkbox-item:hover { border-color: #0ea5e9; background: #f0f9ff; }
+    .btn-row { display: flex; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, #0ea5e9, #0369a1); color: #fff; }
+    .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(14,165,233,0.4); }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: 1.5px solid #e2e8f0; }
+    .btn-secondary:hover { background: #e2e8f0; }
+    .footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 48px; text-align: center; }
+    .footer p { font-size: 13px; color: #94a3b8; }
+    .deadline { display: inline-flex; align-items: center; gap: 6px; background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 14px; font-size: 13px; font-weight: 600; margin-top: 8px; }
+    @media (max-width: 600px) { .container { margin: 0; border-radius: 0; } .form-body, .header { padding: 28px 24px; } .footer { padding: 16px 24px; } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Let's Build Your Website! 🎉</h1>
+    <p>A few quick details — takes about 3 minutes</p>
+  </div>
+
+  <form class="form-body" id="infoForm" action="#" method="POST">
+
+    <div class="intro">
+      <strong>Thanks for your order! Before we build, we need a few quick details.</strong>
+      We use this to personalize your site, add your real contact info, and make sure everything is accurate.
+      <div class="deadline">⏰ Please fill this out within 48 hours — we build with best available info after that.</div>
+    </div>
+
+    <!-- Business Name (pre-filled via URL param) -->
+    <div class="field">
+      <label for="business_name">Business Name</label>
+      <input type="text" id="business_name" name="business_name" class="prefilled" value="BUSINESS_NAME_PLACEHOLDER" readonly>
+    </div>
+
+    <!-- Contact Name -->
+    <div class="field">
+      <label for="contact_name">Your Name <span>(who should we mention on the site?)</span></label>
+      <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Mike Johnson" required>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="field">
+      <label for="phone">Phone Number <span>(click-to-call on the site)</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. (512) 555-0199" required>
+    </div>
+
+    <!-- Email (pre-filled) -->
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" class="prefilled" value="EMAIL_PLACEHOLDER" readonly>
+    </div>
+
+    <!-- Physical Address / Service Area -->
+    <div class="field">
+      <label for="address">Business Address or Service Area <span>(city, state, zip)</span></label>
+      <input type="text" id="address" name="address" placeholder="e.g. 123 Main St, Austin, TX 78701  OR  Austin, Round Rock, Cedar Park — TX" required>
+    </div>
+
+    <!-- Preferred Domain Name -->
+    <div class="field">
+      <label for="domain">Preferred Domain Name <span>(optional — e.g. yourcompany.com)</span></label>
+      <input type="text" id="domain" name="domain" placeholder="yourcompany.com">
+      <p style="font-size:12px;color:#94a3b8;margin-top:4px;">We'll help you set this up after your site is live.</p>
+    </div>
+
+    <!-- Logo Upload -->
+    <div class="field">
+      <label>Do you have a logo? <span>(optional)</span></label>
+      <div class="upload-area">
+        <p>📎 Drop your logo here, or click to browse</p>
+        <input type="file" id="logo" name="logo" accept="image/*,.pdf,.svg">
+        <p style="font-size:12px;color:#94a3b8;margin-top:6px;margin-bottom:0;">PNG, JPG, SVG, or PDF — we'll recreate it if you don't have one</p>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="field">
+      <label>Do you have any testimonials? <span>(optional — great for credibility)</span></label>
+      <textarea id="testimonials" name="testimonials" placeholder="Paste any reviews or testimonials you have from Google, Yelp, Facebook, or clients..."></textarea>
+    </div>
+
+    <!-- Google Business Profile -->
+    <div class="field">
+      <label for="google_business">Google Business Profile URL <span>(optional)</span></label>
+      <input type="text" id="google_business" name="google_business" placeholder="https://maps.google.com/... or https://business.google.com/...">
+    </div>
+
+    <!-- Extra Requests -->
+    <div class="field">
+      <label for="extra">Anything else you want on your website? <span>(optional)</span></label>
+      <textarea id="extra" name="extra" placeholder="e.g. 'I want a photo gallery', 'Add a service area map', 'Show our years of experience', 'Add a booking form'..."></textarea>
+    </div>
+
+    <!-- Submit -->
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Send My Info →</button>
+      <a href="#" class="btn btn-secondary" onclick="window.close();return false;">Skip — Build With Defaults</a>
+    </div>
+
+  </form>
+
+  <div class="footer">
+    <p>Questions? Reply to your order confirmation email — we respond within 2 hours.</p>
+    <p style="margin-top:4px;">— John, Orange Agency</p>
+  </div>
+</div>
+
+<script>
+// Auto-fill from URL params
+const params = new URLSearchParams(window.location.search);
+if (params.get('business')) {
+  const el = document.getElementById('business_name');
+  if (el) { el.value = params.get('business'); el.readOnly = false; el.classList.remove('prefilled'); }
+}
+if (params.get('email')) {
+  const el = document.getElementById('email');
+  if (el) { el.value = params.get('email'); }
+}
+
+// Handle submit — send to a backend or email
+document.getElementById('infoForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  console.log('Form data:', data);
+  // In production: POST to a webhook or send via Brevo
+  alert('Thanks! Your info has been received. We\'ll start building shortly! 🚀');
+  this.reset();
+});
+</script>
+</body>
+</html>
