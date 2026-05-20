@@ -104,7 +104,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "192"
+    "reviewCount": "221"
   }
 }</script>
 .services-hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);padding:120px 24px 60px;text-align:center;color:#fff}
@@ -252,10 +252,21 @@ function transitionPage(url) { document.body.style.opacity='0'; setTimeout(()=>{
 document.addEventListener('DOMContentLoaded', function(){
 
   // ── Page loader ──
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.page-loader').forEach(el => el.classList.add('hidden'));
+  function hideLoader() {
+    document.querySelectorAll('.page-loader').forEach(el => {
+      el.style.transition = 'opacity 0.5s ease';
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 500);
+    });
     document.querySelectorAll('.hero').forEach(el => el.classList.add('loaded'));
-  });
+  }
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+    // Fallback: force-hide after 3s max
+    setTimeout(hideLoader, 3000);
+  }
 
   // ── Nav scroll ──
   window.addEventListener('scroll', () => {
