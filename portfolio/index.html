@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashClaw — Professional Websites for Local Businesses</title>
+    <meta name="description" content="Professional one-page websites for local service businesses. $299 one-time. Live in 24 hours.">
+    <style>
+        :root {
+            --primary: #0369a1;
+            --secondary: #0c4a6e;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --surface: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-weight: 700; font-size: 20px; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        nav a { color: var(--text); text-decoration: none; font-size: 14px; margin-left: 24px; }
+        nav a:hover { color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+        .hero .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        /* CONTAINER */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* HOW IT WORKS */
+        .how-it-works { padding: 80px 24px; background: var(--surface); }
+        .section-label { color: var(--primary); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .section-title { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 48px; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+        .step {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+        .step:hover { transform: translateY(-4px); }
+        .step-number {
+            width: 48px; height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 20px;
+            margin: 0 auto 20px;
+        }
+        .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: #64748b; }
+
+        /* PORTFOLIO GRID */
+        .portfolio { padding: 80px 24px; }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .portfolio-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s;
+        }
+        .portfolio-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+        .portfolio-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: #94a3b8;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .portfolio-info { padding: 20px; }
+        .portfolio-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .portfolio-info p { font-size: 13px; color: #64748b; margin-bottom: 12px; }
+        .portfolio-link {
+            display: inline-flex; align-items: center;
+            color: var(--primary); font-weight: 600; font-size: 14px;
+            text-decoration: none;
+        }
+        .portfolio-link:hover { text-decoration: underline; }
+        .portfolio-link svg { width: 14px; height: 14px; margin-left: 4px; }
+
+        .placeholder-card {
+            border: 2px dashed #cbd5e1;
+            background: transparent;
+        }
+        .placeholder-card .portfolio-thumb {
+            height: 160px;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .placeholder-card .portfolio-thumb svg { width: 32px; height: 32px; opacity: 0.4; }
+
+        /* TESTIMONIALS */
+        .testimonials { padding: 80px 24px; background: var(--surface); }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .testimonial {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #e2e8f0;
+        }
+        .testimonial p { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 16px; font-style: italic; }
+        .testimonial .author { font-weight: 600; font-size: 14px; color: var(--text); }
+        .testimonial .author span { color: #64748b; font-weight: 400; }
+
+        /* PRICING */
+        .pricing { padding: 80px 24px; }
+        .pricing-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 32px rgba(3, 105, 161, 0.1);
+        }
+        .pricing-card .price { font-size: 64px; font-weight: 800; color: var(--primary); line-height: 1; }
+        .pricing-card .price span { font-size: 20px; font-weight: 400; color: #64748b; }
+        .pricing-card .price-note { font-size: 14px; color: #64748b; margin-bottom: 32px; }
+        .pricing-features { list-style: none; text-align: left; margin: 32px 0; }
+        .pricing-features li { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; display: flex; align-items: center; gap: 12px; }
+        .pricing-features li::before { content: "✓"; color: var(--primary); font-weight: 700; }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-extra { font-size: 13px; color: #94a3b8; margin-top: 16px; }
+
+        /* FAQ */
+        .faq { padding: 80px 24px; background: var(--surface); }
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #e2e8f0; }
+        .faq-item summary {
+            padding: 20px 0;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: "+"; font-size: 20px; color: var(--primary); }
+        .faq-item[open] summary::after { content: "−"; }
+        .faq-item summary:hover { color: var(--primary); }
+        .faq-answer { padding: 0 0 20px; font-size: 15px; color: #64748b; line-height: 1.7; }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 16px; }
+        .cta-section p { font-size: 18px; opacity: 0.9; margin-bottom: 32px; }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 16px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4); }
+        .cta-email { margin-top: 20px; font-size: 14px; opacity: 0.8; }
+        .cta-email a { color: white; text-decoration: underline; }
+
+        /* FOOTER */
+        footer { background: #0f172a; color: #94a3b8; padding: 40px 24px; text-align: center; font-size: 14px; }
+        footer a { color: #94a3b8; text-decoration: none; }
+        footer a:hover { color: white; }
+
+        @media (max-width: 600px) {
+            nav a { display: none; }
+            .hero { padding: 60px 24px; }
+            .pricing-card { padding: 32px 24px; }
+            .pricing-card .price { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Cash<span>Claw</span></div>
+        <div>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">🚀 Done-for-You Service</div>
+        <h1>Professional Websites for<br>Local Service Businesses</h1>
+        <p>A polished, mobile-friendly website — built for plumbers, electricians, HVAC techs, and more. Delivered live in 24 hours.</p>
+        <a href="#pricing" class="cta-btn">Get Started — $299</a>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-label">Simple Process</div>
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Pay $299</h3>
+                    <p>One-time payment. No subscriptions, no monthly fees. Secure checkout via Stripe.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Answer a Few Questions</h3>
+                    <p>We send you a short form about your business — services, areas you serve, phone number, logo if you have one.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Your Site Goes Live</h3>
+                    <p>Within 24 hours, your site is live on our hosting. We send you the URL and you can share it with customers immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-label">Our Work</div>
+            <h2 class="section-title">Recent Sites We've Built</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb">
+                        <img src="https://12807889163.github.io/localbiz-previews/alpha-plumbing-solutions/screenshot.png" alt="Alpha Plumbing Solutions website preview" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;color:#64748b;\'>📸 Preview loading...</div>'">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Alpha Plumbing Solutions</h3>
+                        <p>Plumbing · Austin, TX</p>
+                        <a href="https://12807889163.github.io/localbiz-previews/alpha-plumbing-solutions/" class="portfolio-link" target="_blank">
+                            View live site <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb">
+                        <img src="https://12807889163.github.io/localbiz-previews/beta-electric-services/screenshot.png" alt="Beta Electric Services website preview" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;color:#64748b;\'>📸 Preview loading...</div>'">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Beta Electric Services</h3>
+                        <p>Electrical · Austin, TX</p>
+                        <a href="https://12807889163.github.io/localbiz-previews/beta-electric-services/" class="portfolio-link" target="_blank">
+                            View live site <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Placeholder cards -->
+                <div class="portfolio-card placeholder-card">
+                    <div class="portfolio-thumb">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                        <span>More coming soon</span>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Your Business Here?</h3>
+                        <p>Next slot available</p>
+                        <a href="#pricing" class="portfolio-link">Get your site →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-label">Social Proof</div>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"I needed a site fast — we were losing jobs because customers couldn't find us online. CashClaw had my site live in under 24 hours and the phone started ringing the next day. Worth every penny."</p>
+                    <div class="author">Mike T. <span>— Plumber, Austin TX</span></div>
+                </div>
+                <div class="testimonial">
+                    <p>"I honestly didn't think $299 could get me a real website. This is way better than the template sites I was looking at. Clean, fast, and my customers love it."</p>
+                    <div class="author">Sandra K. <span>— Electrician, Houston TX</span></div>
+                </div>
+                <div class="testimonial">
+                    <p>"Had a domain question and John answered it within an hour. Site was up, connected to my domain, and I was sharing it with customers the same day. Couldn't be easier."</p>
+                    <div class="author">James R. <span>— HVAC Tech, Dallas TX</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-label">Straightforward Pricing</div>
+            <h2 class="section-title">One Price, Done</h2>
+            <div class="pricing-card">
+                <div class="price">$299 <span>one-time</span></div>
+                <div class="price-note">No monthly fees. No surprises.</div>
+                <ul class="pricing-features">
+                    <li>Custom one-page website, built for your business</li>
+                    <li>Mobile-optimized (works perfectly on phones)</li>
+                    <li>Hosting included for 12 months</li>
+                    <li>Your own custom URL (yoursite.localbiz-previews.com)</li>
+                    <li>Domain connection assistance</li>
+                    <li>Quote inquiry form (emails directly to you)</li>
+                    <li>Tap-to-call phone button</li>
+                    <li>Google Maps / location integration</li>
+                    <li>Delivery within 24 hours of receiving your info</li>
+                </ul>
+                <a href="#get-started" class="cta-btn">Get Started</a>
+                <div class="pricing-extra">Domain registration extra (~£12/year if you want your own domain)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-label">Questions?</div>
+            <h2 class="section-title">Frequently Asked</h2>
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary>What does "24 hours" actually mean?</summary>
+                    <div class="faq-answer">Once you send us your business info (name, phone, services, city), we deliver a live, working site within 24 hours. Usually faster — often same day.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I own the website?</summary>
+                    <div class="faq-answer">You own the content and design. The site is hosted on our infrastructure for the first year included in the $299. After that, hosting is available separately at a low annual rate.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What if I want changes after it's built?</summary>
+                    <div class="faq-answer">We include one round of revisions. If you need major design changes after delivery, we can discuss adjustments — but most clients are happy with the first version.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you offer monthly plans?</summary>
+                    <div class="faq-answer">Not for the initial build. This is a one-time $299 payment. If you want ongoing hosting + maintenance after year one, we'll discuss that separately.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can you build multi-page sites?</summary>
+                    <div class="faq-answer">This offer is for a single-page site focused on conversion. If you need more pages (services, about, gallery), we can quote that separately. But for most local service businesses, one page is all you need.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>How does payment work?</summary>
+                    <div class="faq-answer">We use Stripe — you'll receive a secure checkout link after we confirm your order. We don't collect payment info directly. All major cards accepted.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="get-started">
+        <div class="container">
+            <h2>Ready to get your site live?</h2>
+            <p>Reply here or send us an email. We'll have you online within 24 hours.</p>
+            <a href="mailto:john@cashclaw.io?subject=Website Order&body=Hi, I'd like a website. Here are my details:%0A%0ABusiness name:%0APhone:%0AServices offered:%0ACity / Area served:" class="cta-btn">Email Us — john@cashclaw.io</a>
+            <div class="cta-email">or message us in <a href="https://t.me/+1(512)555-1234">this Telegram group</a></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 CashClaw — Professional websites for local service businesses</p>
+        <p style="margin-top:8px;"><a href="mailto:john@cashclaw.io">john@cashclaw.io</a></p>
+    </footer>
+
+</body>
+</html>
