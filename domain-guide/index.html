@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Domain Setup Guide — Orange Agency</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; color: #334155; line-height: 1.65; }
+    .page-wrap { max-width: 780px; margin: 0 auto; }
+    .top-bar { background: linear-gradient(135deg, #0ea5e9, #0369a1); padding: 18px 32px; text-align: center; }
+    .top-bar h1 { color: #fff; font-size: 20px; font-weight: 700; }
+    .top-bar p { color: rgba(255,255,255,0.8); font-size: 14px; margin-top: 4px; }
+    .card { background: #fff; border-radius: 14px; margin: 24px; padding: 40px 44px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .intro { background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 32px; }
+    .intro p { font-size: 15px; color: #0369a1; margin: 0; }
+    .intro strong { font-size: 16px; }
+    h2 { font-size: 22px; color: #0f172a; margin: 36px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 16px; color: #0f172a; margin: 20px 0 8px; }
+    p { font-size: 15px; color: #374151; margin: 0 0 12px; }
+    .time-est { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #15803d;
+                border: 1px solid #bbf7d0; border-radius: 20px; padding: 5px 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .steps { counter-reset: step; }
+    .step { display: flex; gap: 18px; margin-bottom: 28px; }
+    .step-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #0ea5e9, #0369a1); border-radius: 12px;
+                 display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .step-body { flex: 1; }
+    .step-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: #475569; margin-bottom: 8px; }
+    .screenshot { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 14px 0; text-align: center; }
+    .screenshot-placeholder { background: linear-gradient(135deg, #e2e8f0, #f1f5f9); border-radius: 8px; padding: 32px 20px; text-align: center; }
+    .screenshot-placeholder p { font-size: 13px; color: #94a3b8; margin: 0; }
+    .screenshot-placeholder .label { font-size: 14px; font-weight: 600; color: #64748b; margin-bottom: 4px; }
+    code, .code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 2px 7px; font-size: 13px; font-family: 'Courier New', monospace; color: #0f172a; }
+    .dns-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    .dns-table th { background: #f8fafc; padding: 10px 14px; text-align: left; border: 1px solid #e2e8f0; font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
+    .dns-table td { padding: 10px 14px; border: 1px solid #e2e8f0; color: #374151; }
+    .dns-table tr:nth-child(even) td { background: #fafafa; }
+    .warn { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 14px; color: #92400e; }
+    .warn strong { display: block; margin-bottom: 2px; }
+    .success { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 14px; color: #166534; }
+    .success strong { display: block; margin-bottom: 2px; }
+    .nav-box { background: #f8fafc; border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+    .nav-box p { font-size: 14px; color: #64748b; margin-bottom: 10px; }
+    .nav-steps { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-step { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: #475569; }
+    .nav-step.active { background: #0ea5e9; color: #fff; border-color: #0ea5e9; }
+    .footer { text-align: center; padding: 24px; font-size: 13px; color: #94a3b8; }
+    .footer a { color: #0ea5e9; text-decoration: none; }
+    @media (max-width: 600px) { .card { padding: 24px 20px; margin: 16px; } }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="top-bar">
+    <h1>🌐 Custom Domain Setup Guide</h1>
+    <p>Namecheap DNS → GitHub Pages — ~10 minutes total</p>
+  </div>
+
+  <div class="card">
+
+    <div class="intro">
+      <p><strong>This guide shows you how to connect your own domain</strong> (e.g. yourbusiness.com) to your new website hosted on GitHub Pages. We recommend Namecheap — but the DNS steps are similar on GoDaddy, Google Domains, or Cloudflare.</p>
+    </div>
+
+    <div class="time-est">⏱️ Total time: ~10 minutes &nbsp;|&nbsp; 💰 Cost: ~$12/year</div>
+
+    <div class="nav-box">
+      <p>Jump to step:</p>
+      <div class="nav-steps">
+        <span class="nav-step active">1. Buy Domain</span>
+        <span class="nav-step">2. Namecheap DNS</span>
+        <span class="nav-step">3. GitHub Pages</span>
+        <span class="nav-step">4. Enable HTTPS</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <h2>Step 1 — Buy Your Domain</h2>
+    <div class="step">
+      <div class="step-icon">🌐</div>
+      <div class="step-body">
+        <div class="step-title">Buy a domain (Namecheap recommended)</div>
+        <p>Go to <strong>namecheap.com</strong> and search for your desired domain. Most domains cost $10–15/year for the first year.</p>
+        <p>Good options to check:</p>
+        <p>• <strong>yourbusiness.com</strong> — the classic choice<br>
+           • <strong>yourbusiness.services</strong> — great for service businesses<br>
+           • <strong>yourbusiness.xyz</strong> — budget-friendly</p>
+        <p>Complete your purchase and move on to Step 2.</p>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <h2>Step 2 — Set Up DNS on Namecheap</h2>
+    <div class="step">
+      <div class="step-icon">🔧</div>
+      <div class="step-body">
+        <div class="step-title">Add DNS records in Namecheap</div>
+        <p>After purchasing your domain, log into Namecheap and go to <strong>Dashboard → Domain List → Manage → Advanced DNS</strong>.</p>
+
+        <div class="screenshot">
+          <div class="screenshot-placeholder">
+            <div class="label">📸 Screenshot: Namecheap Advanced DNS page</div>
+            <p>Look for the "HOST RECORDS" section near the bottom of the page</p>
+          </div>
+        </div>
+
+        <p>Delete any existing A records (some registrars add defaults). Then add the following records:</p>
+
+        <h3>CNAME Record (required — points to your GitHub site)</h3>
+        <table class="dns-table">
+          <thead><tr><th>Type</th><th>Host</th><th>Value</th><th>TTL</th></tr></thead>
+          <tbody>
+            <tr><td>CNAME</td><td>www</td><td>12807889163.github.io</td><td>Automatic</td></tr>
+          </tbody>
+        </table>
+
+        <h3>ALIAS Record (optional but recommended — root domain redirect)</h3>
+        <table class="dns-table">
+          <thead><tr><th>Type</th><th>Host</th><th>Value</th><th>TTL</th></tr></thead>
+          <tbody>
+            <tr><td>ALIAS</td><td>@</td><td>12807889163.github.io</td><td>Automatic</td></tr>
+          </tbody>
+        </table>
+
+        <div class="warn">
+          <strong>⚠️ Important: Use ALIAS, not CNAME</strong>
+          Some registrars call this "ALIAS", "URL Redirect", or "Forwarding". It must point to <code>12807889163.github.io</code> — not your GitHub username. If you don't see ALIAS, use URL Redirect/Forwarding to forward your root domain to <code>www.yourdomain.com</code>.
+        </div>
+
+        <div class="success">
+          <strong>✅ DNS tip:</strong> Changes can take 10 minutes to 48 hours to propagate globally. Don't panic if things don't work immediately — give it up to 2 hours before troubleshooting.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <h2>Step 3 — Enable GitHub Pages + Custom Domain</h2>
+    <div class="step">
+      <div class="step-icon">⚙️</div>
+      <div class="step-body">
+        <div class="step-title">Tell GitHub to use your custom domain</div>
+        <p>You'll need access to the GitHub repository. If you don't have it, reply to your delivery email and we'll add you as a collaborator.</p>
+        <p>Steps:</p>
+        <p>1. Go to the GitHub repository: <code>12807889163/localbiz-previews</code><br>
+           2. Go to <strong>Settings → Pages</strong><br>
+           3. Under "Custom domain", enter your domain (e.g. <code>yourbusiness.com</code>)<br>
+           4. Click <strong>Save</strong></p>
+
+        <div class="screenshot">
+          <div class="screenshot-placeholder">
+            <div class="label">📸 Screenshot: GitHub Pages Settings</div>
+            <p>Settings → Pages → Custom domain field highlighted</p>
+          </div>
+        </div>
+
+        <div class="warn">
+          <strong>⚠️ DNS check:</strong> GitHub will check your DNS configuration. If it shows a warning, the DNS may not have propagated yet — wait 10–30 minutes and check again.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <h2>Step 4 — Enable HTTPS (Recommended)</h2>
+    <div class="step">
+      <div class="step-icon">🔒</div>
+      <div class="step-body">
+        <div class="step-title">Secure your site with a free SSL certificate</div>
+        <p>GitHub Pages automatically provisions a free SSL certificate via Let's Encrypt for custom domains.</p>
+        <p>In your GitHub repository <strong>Settings → Pages</strong>:</p>
+        <p>✅ Check <strong>"Enforce HTTPS"</strong><br>
+           This may take 5–15 minutes after initial setup.</p>
+        <div class="success">
+          <strong>✅ That's it!</strong> Once HTTPS is enforced, your site will be live at <code>https://yourbusiness.com</code> — no "not secure" warnings, great for Google rankings.
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK SUMMARY -->
+    <h2>Quick Reference</h2>
+    <div class="success">
+      <strong>✅ Complete checklist:</strong>
+      <p style="margin-top:8px;">☐ Domain purchased<br>
+         ☐ CNAME record: www → 12807889163.github.io<br>
+         ☐ ALIAS/redirect: @ → 12807889163.github.io<br>
+         ☐ GitHub Pages: Custom domain saved<br>
+         ☐ "Enforce HTTPS" checked</p>
+    </div>
+
+    <div class="nav-box">
+      <p style="margin-bottom:8px;"><strong>Need help?</strong></p>
+      <p>Reply to your delivery confirmation email and we'll walk you through it together — at no extra cost.</p>
+      <p style="margin-bottom:0;">— John, Orange Agency &nbsp;|&nbsp; hello@outreachbiz.xyz</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Questions? Reply to your delivery email or contact <a href="mailto:hello@outreachbiz.xyz">hello@outreachbiz.xyz</a></p>
+    <p style="margin-top:4px;">© Orange Agency — <a href="https://orangeagency.media">orangeagency.media</a></p>
+  </div>
+
+</div>
+</body>
+</html>
