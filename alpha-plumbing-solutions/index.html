@@ -23,7 +23,7 @@
 }</script>
 <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     :root {
         --primary:   #0369a1;
         --secondary: #0c4a6e;
@@ -39,9 +39,9 @@
         --radius-lg: 20px;
         --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    
+
     html { scroll-behavior: smooth; font-size: 16px; }
-    
+
     body {
         font-family: var(--font);
         background: var(--bg);
@@ -49,11 +49,11 @@
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
     }
-    
+
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; font-family: inherit; border: none; }
-    
+
     /* ── Sticky Header ── */
     .site-header {
         position: sticky;
@@ -96,7 +96,7 @@
         font-weight: 800;
     }
     .logo span { color: var(--text); }
-    
+
     .header-cta {
         display: flex;
         align-items: center;
@@ -117,7 +117,7 @@
     }
     .btn-call:hover { background: var(--secondary); transform: translateY(-1px); }
     .btn-call .icon { width: 18px; height: 18px; }
-    
+
     .btn-ghost {
         padding: 10px 18px;
         border-radius: 8px;
@@ -128,7 +128,7 @@
         transition: background 0.2s, color 0.2s;
     }
     .btn-ghost:hover { background: var(--primary); color: white; }
-    
+
     /* ── Mobile Menu ── */
     .menu-toggle {
         display: none;
@@ -138,7 +138,7 @@
         color: var(--text);
     }
     .menu-toggle .icon { width: 24px; height: 24px; }
-    
+
     .mobile-nav {
         display: none;
         position: fixed;
@@ -179,7 +179,7 @@
         padding: 16px;
         font-size: 1.1rem;
     }
-    
+
     /* ── Hero ── */
     .hero {
         background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 50%, #023e8a 100%);
@@ -245,7 +245,7 @@
     }
     .hero-cta.secondary:hover { background: rgba(255,255,255,0.25); }
     .hero-cta .icon { width: 20px; height: 20px; }
-    
+
     .hero-image-wrap {
         position: relative;
         border-radius: var(--radius-lg);
@@ -262,7 +262,7 @@
         transition: opacity 0.5s ease;
     }
     .hero-image-wrap img.loaded { opacity: 1; }
-    
+
     /* ── Trust Bar ── */
     .trust-bar {
         background: var(--surface);
@@ -287,14 +287,14 @@
     }
     .trust-item .icon { color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; }
     .trust-item.check .icon { color: #16a34a; }
-    
+
     /* ── Sections ── */
     .section { padding: 80px 24px; }
     .section-alt { background: var(--surface); }
     .section-dark { background: var(--secondary); color: white; }
-    
+
     .section-inner { max-width: 1200px; margin: 0 auto; }
-    
+
     .section-label {
         font-size: 0.8rem;
         font-weight: 700;
@@ -310,7 +310,7 @@
         margin-bottom: 16px;
     }
     .section-dark .section-label { color: var(--accent); }
-    
+
     /* ── Services ── */
     .services-grid {
         display: grid;
@@ -361,7 +361,7 @@
         align-items: center;
         gap: 4px;
     }
-    
+
     /* ── Stats ── */
     .stats-grid {
         display: grid;
@@ -380,7 +380,7 @@
     .stat-label { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
     .section-dark .stat-number { color: var(--accent); }
     .section-dark .stat-label { color: rgba(255,255,255,0.7); }
-    
+
     /* ── Process / How It Works ── */
     .process-grid {
         display: grid;
@@ -427,7 +427,7 @@
             grid-template-columns: repeat(4, 1fr);
         }
     }
-    
+
     /* ── About ── */
     .about-grid {
         display: grid;
@@ -474,7 +474,7 @@
         font-weight: 600;
     }
     .badge .icon { width: 16px; height: 16px; color: var(--primary); }
-    
+
     /* ── Testimonials ── */
     .testimonials-grid {
         display: grid;
@@ -527,7 +527,7 @@
     }
     .testimonial-author strong { display: block; font-size: 0.9rem; }
     .testimonial-author span { font-size: 0.82rem; color: var(--muted); }
-    
+
     /* ── FAQ ── */
     .faq-list { margin-top: 48px; max-width: 720px; }
     .faq-item {
@@ -549,8 +549,8 @@
         gap: 16px;
     }
     .faq-q:hover { color: var(--primary); }
-    .faq-q .icon { 
-        width: 20px; height: 20px; 
+    .faq-q .icon {
+        width: 20px; height: 20px;
         transition: transform 0.3s;
         flex-shrink: 0;
         color: var(--muted);
@@ -568,7 +568,7 @@
         color: var(--muted);
         line-height: 1.7;
     }
-    
+
     /* ── CTA Banner ── */
     .cta-banner {
         background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 50%, #023e8a 100%);
@@ -596,7 +596,7 @@
         justify-content: center;
     }
     .cta-buttons .hero-cta { font-size: 1rem; padding: 14px 28px; }
-    
+
     /* ── Quote Form ── */
     .form-section { padding: 80px 24px; }
     .form-grid {
@@ -647,7 +647,7 @@
         margin-top: 8px;
     }
     .btn-submit:hover { background: var(--secondary); transform: translateY(-1px); }
-    
+
     /* ── Footer ── */
     footer {
         background: var(--secondary);
@@ -691,7 +691,7 @@
         opacity: 0.6;
     }
     .footer-bottom a { margin-left: 16px; }
-    
+
     /* ── WhatsApp Float ── */
     .wa-float {
         position: fixed;
@@ -714,11 +714,11 @@
     }
     .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
     .wa-btn .icon { width: 22px; height: 22px; }
-    
+
     /* ── Utility ── */
     .text-center { text-align: center; }
     .mt-0 { margin-top: 0; }
-    
+
     /* ── Animations ── */
     @keyframes fadeUp {
         from { opacity: 0; transform: translateY(20px); }
@@ -731,7 +731,7 @@
     .fade-up:nth-child(2) { animation-delay: 0.1s; }
     .fade-up:nth-child(3) { animation-delay: 0.2s; }
     .fade-up:nth-child(4) { animation-delay: 0.3s; }
-    
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
         .hero-content { grid-template-columns: 1fr; gap: 40px; }
@@ -747,7 +747,7 @@
         .hero { padding: 48px 20px 64px; }
         .section { padding: 60px 20px; }
     }
-    
+
     @media (max-width: 480px) {
         .hero-actions { flex-direction: column; }
         .hero-cta { justify-content: center; }
@@ -806,7 +806,7 @@
       <div class="hero-actions">
         <a href="tel:+15555555555" class="hero-cta">
           <span class="icon icon-phone" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          Call Now — Free Estimate
+          Call Now - Free Estimate
         </a>
         <a href="contact.html" class="hero-cta secondary">
           <span class="icon icon-quote" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></span>
@@ -815,10 +815,10 @@
       </div>
     </div>
     <div class="hero-image-wrap">
-      <img 
+      <img
         class="hero-img"
         data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&fm=webp&fit=crop"
-        alt="Alpha Plumbing Solutions — professional Plumbing service"
+        alt="Alpha Plumbing Solutions - professional Plumbing service"
         width="800"
         height="600"
       >
@@ -839,7 +839,7 @@
     <div class="service-card">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
       <h3>Drain Cleaning</h3>
-      <p>Slow drain? We clear it with camera-guided equipment — usually in under an hour.</p>
+      <p>Slow drain? We clear it with camera-guided equipment - usually in under an hour.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $89</div>
     </div>
     <div class="service-card">
@@ -851,19 +851,19 @@
     <div class="service-card">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
       <h3>Water Heater Service</h3>
-      <p>Install, repair, or replace — all major brands. Tank and tankless units.</p>
+      <p>Install, repair, or replace - all major brands. Tank and tankless units.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $149</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h16M4 10h16M6 6h12M8 2h8"/></svg></div>
       <h3>Pipe Installation</h3>
-      <p>Copper, PEX, or PVC — new construction and repiping for older homes.</p>
+      <p>Copper, PEX, or PVC - new construction and repiping for older homes.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $299</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12h10M5 8h14l-1 10H6L5 8zM9 4h6v4H9z"/></svg></div>
       <h3>Toilet & Fixture Repair</h3>
-      <p>Running toilets, low pressure, faucet replacements — no job too small.</p>
+      <p>Running toilets, low pressure, faucet replacements - no job too small.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $79</div>
     </div>
     <div class="service-card">
@@ -897,11 +897,11 @@
         <div class="stat-label">Years in Business</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">373+</div>
+        <div class="stat-number">787+</div>
         <div class="stat-label">Homes Served</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">155+</div>
+        <div class="stat-number">356+</div>
         <div class="stat-label">Five-Star Reviews</div>
       </div>
       <div class="stat-item">
@@ -925,7 +925,7 @@
       <div class="process-step">
         <div class="process-step-num">2</div>
         <h3>We Diagnose the Problem</h3>
-        <p>We inspect the issue and explain exactly what's wrong — no guesswork.</p>
+        <p>We inspect the issue and explain exactly what's wrong - no guesswork.</p>
       </div>
       <div class="process-step">
         <div class="process-step-num">3</div>
@@ -946,32 +946,32 @@
     <h2 class="section-title">What Our Customers Say</h2>
     <div class="testimonials-grid">
         <div class="testimonial-card">
-          <p>"Water heater died in the middle of a cold snap. Professional, on-time, and the price was exactly what they quoted. Would use again."</p>
+          <p>"Slow drain that three other plumbers couldn't fix. Hydro-jetting cleared years of buildup - still running perfectly 8 months later."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">S</div>
+            <div class="author-avatar">N</div>
             <div>
-              <strong>Stephanie N.</strong>
-              <span>San Marcos</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p>"Needed a full re-pipe for a 1960s house. New tankless unit installed the next morning. Hot water ever since, not a single complaint."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div>
-              <strong>Stephanie N.</strong>
+              <strong>Nicole F.</strong>
               <span>Buda</span>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
-          <p>"Had a burst pipe on a Sunday morning — water everywhere. Crew showed up at 7am, done by 4pm. Walls patched, floor cleaned, ready to use."</p>
+          <p>"Water heater died in the middle of a cold snap. They were here within 45 minutes and had the water shut off before damage spread."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">A</div>
+            <div class="author-avatar">L</div>
             <div>
-              <strong>Amanda H.</strong>
-              <span>Round Rock</span>
+              <strong>Linda R.</strong>
+              <span>Austin</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"Bathroom renovation required moving drain lines. Found root intrusion the others missed. Fixed permanently with a trenchless repair."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">T</div>
+            <div>
+              <strong>Tina C.</strong>
+              <span>Georgetown</span>
             </div>
           </div>
         </div>
@@ -990,7 +990,7 @@
         <span class="icon icon-chevron" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">No — all initial estimates are free. We'll inspect the issue, explain what we found, and give you an upfront price before any work begins.</div>
+        <div class="faq-a-inner">No - all initial estimates are free. We'll inspect the issue, explain what we found, and give you an upfront price before any work begins.</div>
       </div>
     </div>
     <div class="faq-item" data-faq="1">
@@ -1008,7 +1008,7 @@
         <span class="icon icon-chevron" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Yes — we're available 24/7, 365 days a year. Emergency calls are responded to within an hour, and we don't charge extra for nights or weekends.</div>
+        <div class="faq-a-inner">Yes - we're available 24/7, 365 days a year. Emergency calls are responded to within an hour, and we don't charge extra for nights or weekends.</div>
       </div>
     </div>
     <div class="faq-item" data-faq="3">
@@ -1035,7 +1035,7 @@
 <div class="cta-banner">
   <div class="section-inner" style="max-width:900px;">
     <h2>Ready to Get It Done?</h2>
-    <p>Call us today for a free estimate. We answer the phone — not a call center.</p>
+    <p>Call us today for a free estimate. We answer the phone - not a call center.</p>
     <div class="cta-buttons">
       <a href="tel:+15555555555" class="hero-cta">
         <span class="icon icon-phone" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
@@ -1052,7 +1052,7 @@
   <div class="section-inner" style="max-width:900px;">
     <p class="section-label">Get Started</p>
     <h2 class="section-title">Request a Free Quote</h2>
-    <p style="color:var(--muted);margin-top:8px;">Fill out the form below and we'll get back to you within 2 hours — usually much faster.</p>
+    <p style="color:var(--muted);margin-top:8px;">Fill out the form below and we'll get back to you within 2 hours - usually much faster.</p>
     <form class="form-grid" action="https://formspree.io/f/your-form-id" method="POST">
       <div class="form-group">
         <label for="name">Your Name *</label>
@@ -1082,7 +1082,7 @@
       </div>
       <div class="form-group full">
         <label for="message">Tell Us About the Issue</label>
-        <textarea id="message" name="message" placeholder="Describe what you're dealing with — the more detail the better we can prepare for the job."></textarea>
+        <textarea id="message" name="message" placeholder="Describe what you're dealing with - the more detail the better we can prepare for the job."></textarea>
       </div>
       <div class="form-group full">
         <button type="submit" class="btn-submit">Get My Free Quote →</button>
@@ -1115,7 +1115,7 @@
         <li><span class="icon icon-phone" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span> <a href="tel:+15555555555">555-555-5555</a></li>
         <li><span class="icon icon-mail" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span> <a href="mailto:john@cashclaw-test.com">john@cashclaw-test.com</a></li>
         <li><span class="icon icon-map_pin" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Austin, Texas</li>
-        <li><span class="icon icon-clock" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Mon–Sat 7am–7pm</li>
+        <li><span class="icon icon-clock" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Mon-Sat 7am-7pm</li>
       </ul>
     </div>
   </div>
@@ -1125,7 +1125,7 @@
   </div>
 </footer>
 <div class="wa-float">
-  <a href="https://wa.me/115551234567?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20service" 
+  <a href="https://wa.me/115551234567?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20service"
      class="wa-btn" target="_blank" rel="noopener">
     <span class="icon icon-whatsapp" style="width:22px;height:22px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
     <span>Message Us</span>
@@ -1149,7 +1149,7 @@
                 img.src = src;
             }
         }
-        
+
         // ── Lazy load below-fold images ──
         if ('IntersectionObserver' in window) {
             var lazyObserver = new IntersectionObserver(function(entries) {
@@ -1168,12 +1168,12 @@
                 lazyObserver.observe(img);
             });
         }
-        
+
         // ── Mobile Menu ──
         var toggle = document.querySelector('.menu-toggle');
         var mobileNav = document.querySelector('.mobile-nav');
         var closeBtn = document.querySelector('.mobile-nav-close');
-        
+
         if (toggle && mobileNav) {
             toggle.addEventListener('click', function() {
                 mobileNav.classList.add('open');
@@ -1193,7 +1193,7 @@
                 document.body.style.overflow = '';
             });
         });
-        
+
         // ── FAQ Accordion ──
         document.querySelectorAll('.faq-q').forEach(function(btn) {
             btn.addEventListener('click', function() {
