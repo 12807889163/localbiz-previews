@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Logo">
+  <defs>
+    <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon: Wrench -->
+  <g transform="translate(4,8)">
+    <path d="M60.4 11.6L51 2.2C49.5 0.7 47.2 0 44.8 0s-4.7 0.7-6.2 2.2L20.2 20.5C14.5 23.4 11.6 29.5 12.4 35.7L6 60.4C5.2 63.5 7.3 66.5 10.4 67.3L34.4 71.5C37.5 72.2 40.7 70.1 41.5 67C42.3 60.8 48.4 57.9 53.6 52.7L63.8 42.5C65.3 41 66 38.7 66 36.3s-0.7-4.7-2.2-6.2L61.3 27.6C63.8 24.2 63.8 18.8 60.4 11.6Z" fill="url(#pg)" transform="scale(0.6) translate(4,4)"/>
+    <circle cx="30" cy="30" r="18" fill="#0369a1"/>
+    <path d="M26 22h8M26 30h8M26 38h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M30 16v4M30 40v4M16 30h4M40 30h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Text -->
+  <text x="70" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#0369a1">PLUMBING PRO</text>
+  <text x="70" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="1">PROFESSIONAL SERVICES</text>
+</svg>
