@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alpha Plumbing Solutions | Trusted Plumbing in Austin, TX</title>
-<meta name="description" content="Professional plumbing services in Austin, TX. Free estimates. 17+ years experience. Call 555-555-5555.">
+<meta name="description" content="Professional plumbing services in Austin, TX. Free estimates. 10+ years experience. Call 555-555-5555.">
 <link rel="icon" type="image/png" href="https://12807889163.github.io/localbiz-previews/assets/logos/alpha-plumbing-solutions/favicon-32.png">
 <link rel="apple-touch-icon" href="https://12807889163.github.io/localbiz-previews/assets/logos/alpha-plumbing-solutions/favicon-180.png">
 
 <meta property="og:title" content="Alpha Plumbing Solutions | Trusted Plumbing in Austin, TX">
-<meta property="og:description" content="Professional plumbing services in Austin, TX. Free estimates. 17+ years experience. Call 555-555-5555.">
+<meta property="og:description" content="Professional plumbing services in Austin, TX. Free estimates. 10+ years experience. Call 555-555-5555.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://12807889163.github.io/localbiz-previews/alpha-plumbing-solutions">
 <meta property="og:image" content="https://12807889163.github.io/localbiz-previews/assets/logos/alpha-plumbing-solutions/og-image.png">
@@ -199,6 +199,26 @@
         background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         opacity: 0.8;
     }
+    .hero-float {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.07;
+        background: white;
+    }
+    .hero-float-1 {
+        width: 400px; height: 400px;
+        top: -100px; right: -80px;
+    }
+    .hero-float-2 {
+        width: 250px; height: 250px;
+        bottom: -60px; left: 10%;
+        opacity: 0.05;
+    }
+    .hero-float-3 {
+        width: 180px; height: 180px;
+        top: 30%; right: 30%;
+        opacity: 0.04;
+    }
     .hero-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -234,20 +254,22 @@
         align-items: center;
         gap: 8px;
         background: var(--accent);
-        color: var(--secondary);
-        padding: 14px 28px;
+        color: #1e293b;
+        padding: 15px 32px;
         border-radius: 10px;
         font-weight: 700;
         font-size: 1.05rem;
         transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 14px rgba(245,158,11,0.35);
     }
-    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(245,158,11,0.45); }
     .hero-cta.secondary {
-        background: rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.12);
         color: white;
         backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.25);
     }
-    .hero-cta.secondary:hover { background: rgba(255,255,255,0.25); }
+    .hero-cta.secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
     .hero-cta .icon { width: 20px; height: 20px; }
 
     .hero-image-wrap {
@@ -300,20 +322,33 @@
     .section-inner { max-width: 1200px; margin: 0 auto; }
 
     .section-label {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.15em;
         color: var(--primary);
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .section-label::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
     }
     .section-title {
-        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-size: clamp(1.7rem, 3.5vw, 2.5rem);
         font-weight: 800;
         line-height: 1.2;
-        margin-bottom: 16px;
+        margin-bottom: 48px;
+        color: var(--text);
     }
     .section-dark .section-label { color: var(--accent); }
+    .section-dark .section-label::before { background: var(--accent); }
 
     /* ── Services ── */
     .services-grid {
@@ -327,11 +362,12 @@
         border: 1px solid rgba(0,0,0,0.07);
         border-radius: var(--radius);
         padding: 28px;
-        transition: box-shadow 0.2s, transform 0.2s;
+        transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
     }
     .service-card:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(3,105,161,0.12), 0 4px 12px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+        border-color: rgba(3,105,161,0.2);
     }
     .service-icon {
         width: 48px;
@@ -487,11 +523,16 @@
         margin-top: 48px;
     }
     .testimonial-card {
-        background: var(--surface);
+        background: linear-gradient(135deg, var(--surface) 0%, #f8fafc 100%);
         border: 1px solid rgba(0,0,0,0.07);
         border-radius: var(--radius);
         padding: 28px;
         position: relative;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .testimonial-card:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
     }
     .testimonial-card::before {
         content: '"';
@@ -500,13 +541,13 @@
         right: 20px;
         font-size: 5rem;
         color: var(--primary);
-        opacity: 0.08;
+        opacity: 0.1;
         font-family: Georgia, serif;
         line-height: 1;
     }
     .testimonial-card p {
         font-size: 0.95rem;
-        line-height: 1.7;
+        line-height: 1.75;
         color: var(--text);
         margin-bottom: 20px;
         font-style: italic;
@@ -514,7 +555,7 @@
     .testimonial-author {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 14px;
     }
     .author-avatar {
         width: 44px;
@@ -725,16 +766,30 @@
 
     /* ── Animations ── */
     @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(28px); }
         to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-up {
-        opacity: 0;
-        animation: fadeUp 0.6s ease forwards;
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
     }
-    .fade-up:nth-child(2) { animation-delay: 0.1s; }
-    .fade-up:nth-child(3) { animation-delay: 0.2s; }
-    .fade-up:nth-child(4) { animation-delay: 0.3s; }
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-32px); }
+        to   { opacity: 1; transform: translateX(0); }
+    }
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .animate-delay-1 { transition-delay: 0.1s; }
+    .animate-delay-2 { transition-delay: 0.2s; }
+    .animate-delay-3 { transition-delay: 0.3s; }
+    .animate-delay-4 { transition-delay: 0.4s; }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
@@ -803,10 +858,13 @@
   </div>
 </nav>
 <section class="hero">
+  <div class="hero-float hero-float-1"></div>
+  <div class="hero-float hero-float-2"></div>
+  <div class="hero-float hero-float-3"></div>
   <div class="hero-content">
     <div class="hero-text">
       <h1>Alpha Plumbing Solutions<span>Trusted Plumbing in Austin</span></h1>
-      <p class="hero-sub">"17+ years serving Austin homeowners. Fast, fair, and done right."</p>
+      <p class="hero-sub">"10+ years serving Austin homeowners. Fast, fair, and done right."</p>
       <div class="hero-actions">
         <a href="tel:+15555555555" class="hero-cta">
           <span class="icon icon-phone" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
@@ -840,49 +898,49 @@
     <h2 class="section-title">Professional Drain Solutions</h2>
     <div class="services-grid">
 
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-1">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
       <h3>Drain Cleaning</h3>
       <p>Slow drain? We clear it with camera-guided equipment - usually in under an hour.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $89</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-2">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
       <h3>Leak Detection & Repair</h3>
       <p>Hidden leaks cause big damage. We find them fast and fix them right the first time.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $119</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-3">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
       <h3>Water Heater Service</h3>
       <p>Install, repair, or replace - all major brands. Tank and tankless units.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $149</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-4">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h16M4 10h16M6 6h12M8 2h8"/></svg></div>
       <h3>Pipe Installation</h3>
       <p>Copper, PEX, or PVC - new construction and repiping for older homes.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $299</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-4">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12h10M5 8h14l-1 10H6L5 8zM9 4h6v4H9z"/></svg></div>
       <h3>Toilet & Fixture Repair</h3>
       <p>Running toilets, low pressure, faucet replacements - no job too small.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $79</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-4">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18M7 3v3M17 3v3"/></svg></div>
       <h3>Sewer Line Service</h3>
       <p>Sewer backups are messy. We clear them quickly with hydro-jetting equipment.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> From $249</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-4">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
       <h3>24/7 Emergency Service</h3>
       <p>Burst pipe at 2am? We answer, every day of the year. Fast response guaranteed.</p>
       <div class="service-price"><span class="icon icon-clock" style="width:14px;height:14px;display:inline-flex;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Call for pricing</div>
     </div>
-    <div class="service-card">
+    <div class="service-card animate-on-scroll animate-delay-4">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
       <h3>Plumbing Inspection</h3>
       <p>Buying a home? Full camera inspection of the entire plumbing system.</p>
@@ -896,22 +954,11 @@
     <p class="section-label">Our Track Record</p>
     <h2 class="section-title">Trusted by Austin Homeowners</h2>
     <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">17+</div>
-        <div class="stat-label">Years in Business</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">342+</div>
-        <div class="stat-label">Homes Served</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">222+</div>
-        <div class="stat-label">Five-Star Reviews</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Satisfaction Rate</div>
-      </div>
+      <div class="stat-item animate-on-scroll animate-delay-1"><div class="stat-number">10+</div><div class="stat-label">Years in Business</div></div>
+      <div class="stat-item animate-on-scroll animate-delay-2"><div class="stat-number">530+</div><div class="stat-label">Homes Served</div></div>
+      <div class="stat-item animate-on-scroll animate-delay-3"><div class="stat-number">261+</div><div class="stat-label">Five-Star Reviews</div></div>
+      <div class="stat-item animate-on-scroll animate-delay-4"><div class="stat-number">100%</div><div class="stat-label">Satisfaction Rate</div></div>
+      
     </div>
   </div>
 </section>
@@ -921,22 +968,22 @@
     <h2 class="section-title">4 Simple Steps to Your New Website</h2>
     <div class="process-grid">
 
-      <div class="process-step">
+      <div class="process-step animate-on-scroll animate-delay-1">
         <div class="process-step-num">1</div>
         <h3>Give Us a Call</h3>
         <p>Call us or fill out the form. We'll get back to you within 2 hours.</p>
       </div>
-      <div class="process-step">
+      <div class="process-step animate-on-scroll animate-delay-2">
         <div class="process-step-num">2</div>
         <h3>We Diagnose the Problem</h3>
         <p>We inspect the issue and explain exactly what's wrong - no guesswork.</p>
       </div>
-      <div class="process-step">
+      <div class="process-step animate-on-scroll animate-delay-3">
         <div class="process-step-num">3</div>
         <h3>You Get an Upfront Price</h3>
         <p>We quote you a fair price before any work begins. No surprises.</p>
       </div>
-      <div class="process-step">
+      <div class="process-step animate-on-scroll animate-delay-4">
         <div class="process-step-num">4</div>
         <h3>We Fix It Right</h3>
         <p>Professional repair, clean up when we're done, and a 1-year warranty on all labor.</p>
@@ -949,33 +996,33 @@
     <p class="section-label">Real Reviews</p>
     <h2 class="section-title">What Our Customers Say</h2>
     <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p>"Had a burst pipe on a Sunday morning - water everywhere. Crew showed up at 7am, done by 4pm. Walls patched, floor cleaned, ready to use."</p>
+        <div class="testimonial-card animate-on-scroll">
+          <p>"Slow drain that three other plumbers couldn't fix. New tankless unit installed the next morning. Hot water ever since, not a single complaint."</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=48" alt="Amanda H." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="David S." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--primary);" loading="lazy" onerror="this.style.display='none'">
             <div>
-              <strong>Amanda H.</strong>
+              <strong>David S.</strong>
+              <span>San Marcos</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <p>"Had a burst pipe on a Sunday morning - water everywhere. They were here within 45 minutes and had the water shut off before damage spread."</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="Brian L." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--primary);" loading="lazy" onerror="this.style.display='none'">
+            <div>
+              <strong>Brian L.</strong>
               <span>Cedar Park</span>
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card animate-on-scroll">
           <p>"Water heater died in the middle of a cold snap. Found root intrusion the others missed. Fixed permanently with a trenchless repair."</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=56" alt="Linda R." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
+            <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Amanda H." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--primary);" loading="lazy" onerror="this.style.display='none'">
             <div>
-              <strong>Linda R.</strong>
-              <span>Georgetown</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p>"Needed a full re-pipe for a 1960s house. They were here within 45 minutes and had the water shut off before damage spread."</p>
-          <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=56" alt="Linda R." style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" loading="lazy">
-            <div>
-              <strong>Linda R.</strong>
-              <span>Cedar Park</span>
+              <strong>Amanda H.</strong>
+              <span>Kyle</span>
             </div>
           </div>
         </div>
@@ -1170,6 +1217,19 @@
             }, { rootMargin: '100px' });
             document.querySelectorAll('img[data-src]').forEach(function(img) {
                 lazyObserver.observe(img);
+            });
+
+            // ── Scroll-triggered section animations ──
+            var scrollAnimator = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        scrollAnimator.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+                scrollAnimator.observe(el);
             });
         }
 
