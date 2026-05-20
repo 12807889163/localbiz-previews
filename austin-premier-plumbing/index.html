@@ -108,7 +108,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "115"
+    "reviewCount": "162"
   }
 }</script>
 <style>
@@ -139,8 +139,8 @@ a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
 /* ── PAGE LOADER ── */
-.page-loader{position:fixed;inset:0;z-index:99999;background:var(--white);display:flex;align-items:center;justify-content:center;transition:opacity 0.5s,visibility 0.5s}
-.page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.page-loader{position:fixed;inset:0;z-index:99999;background:var(--white);display:flex;align-items:center;justify-content:center;animation:loaderFadeOut 1.2s ease 0.8s forwards}
+@keyframes loaderFadeOut{0%{opacity:1}100%{opacity:0;visibility:hidden;pointer-events:none}}
 .loader-content{text-align:center}
 .loader-logo{width:64px;height:64px;background:linear-gradient(135deg,var(--p),var(--s));border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:1.5rem;margin:0 auto 20px;animation:loaderPulse 1.5s ease-in-out infinite}
 .loader-bar{width:200px;height:3px;background:var(--light);border-radius:2px;margin:0 auto;overflow:hidden}
@@ -459,9 +459,9 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:64px 24px 28px}
         <a href="/austin-premier-plumbing/contact.html" class="btn-white" onclick="transitionPage(this.href);return false;">Get Free Estimate</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num"><span class="count-up" data-target="47">47</span>+</div><div class="lbl">Years Experience</div></div>
-        <div class="hero-stat"><div class="num"><span class="count-up" data-target="583">583</span>+</div><div class="lbl">Happy Customers</div></div>
-        <div class="hero-stat"><div class="num"><span class="count-up" data-target="247">247</span>+</div><div class="lbl">5-Star Reviews</div></div>
+        <div class="hero-stat"><div class="num"><span class="count-up" data-target="107">107</span>+</div><div class="lbl">Years Experience</div></div>
+        <div class="hero-stat"><div class="num"><span class="count-up" data-target="848">848</span>+</div><div class="lbl">Happy Customers</div></div>
+        <div class="hero-stat"><div class="num"><span class="count-up" data-target="328">328</span>+</div><div class="lbl">5-Star Reviews</div></div>
       </div>
     </div>
     <div class="hero-image-col">
@@ -477,7 +477,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:64px 24px 28px}
         </div>
         <div class="hero-card-item">
           <div class="hc-icon"><i class="fas fa-star"></i></div>
-          <div class="hc-text"><strong>★★★★★ Rated</strong><span>247+ Reviews</span></div>
+          <div class="hc-text"><strong>★★★★★ Rated</strong><span>328+ Reviews</span></div>
         </div>
         <div class="hero-card-item">
           <div class="hc-icon"><i class="fas fa-dollar-sign"></i></div>
@@ -576,9 +576,9 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:64px 24px 28px}
 <!-- Stats -->
 <div class="section-dark" style="padding:80px 24px">
   <div class="stats-grid">
-    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="47">47</span>+</div><div class="stat-divider"></div><div class="stat-label">Years in Business</div></div>
-    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="583">583</span>+</div><div class="stat-divider"></div><div class="stat-label">Jobs Completed</div></div>
-    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="247">247</span>+</div><div class="stat-divider"></div><div class="stat-label">5-Star Reviews</div></div>
+    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="107">107</span>+</div><div class="stat-divider"></div><div class="stat-label">Years in Business</div></div>
+    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="848">848</span>+</div><div class="stat-divider"></div><div class="stat-label">Jobs Completed</div></div>
+    <div class="stat-item reveal"><div class="stat-number"><span class="count-up" data-target="328">328</span>+</div><div class="stat-divider"></div><div class="stat-label">5-Star Reviews</div></div>
     <div class="stat-item reveal"><div class="stat-number">100<span>%</span></div><div class="stat-divider"></div><div class="stat-label">Satisfaction Rate</div></div>
   </div>
 </div>
@@ -655,28 +655,28 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:64px 24px 28px}
     
     <div class="testimonial-card reveal">
       <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"Best HVAC company I have found in years. No upselling, just honest advice and quality work."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">K</div>
-        <div class="testimonial-name"><strong>Kevin M.</strong><span>Chicago, TX</span></div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"The team was professional, on time, and left the work area spotless. The new AC unit is whisper-quiet."</p>
+      <p class="testimonial-text">"They found the source of our rodent problem and sealed it permanently. No more unwanted guests."</p>
       <div class="testimonial-author">
         <div class="testimonial-avatar">J</div>
-        <div class="testimonial-name"><strong>Jennifer L.</strong><span>Phoenix, TX</span></div>
+        <div class="testimonial-name"><strong>James H.</strong><span>Seattle, TX</span></div>
       </div>
     </div>
 
     <div class="testimonial-card reveal">
       <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"Had an emergency water heater failure on a Sunday. They came out within an hour. Could not be happier."</p>
+      <p class="testimonial-text">"The restoration team was incredible after our basement flooded. They were here in 45 minutes and had everything dried within 3 days."</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar">R</div>
-        <div class="testimonial-name"><strong>Robert T.</strong><span>Houston, TX</span></div>
+        <div class="testimonial-avatar">P</div>
+        <div class="testimonial-name"><strong>Patricia L.</strong><span>Atlanta, TX</span></div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Generator install was seamless. The electrician was knowledgeable and walked us through the whole system."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div class="testimonial-name"><strong>Maria G.</strong><span>Denver, TX</span></div>
       </div>
     </div>
   </div>
@@ -847,21 +847,19 @@ function transitionPage(url) {
 document.addEventListener('DOMContentLoaded', function(){
 
   // ── Page loader ──
-  function hideLoader() {
+  // Loader hides automatically via CSS animation after 0.8s
+  // This is the backup JS trigger in case CSS animation fails
+  function forceHideLoader() {
     document.querySelectorAll('.page-loader').forEach(el => {
-      el.style.transition = 'opacity 0.5s ease';
+      el.style.animation = 'none';
       el.style.opacity = '0';
-      setTimeout(() => el.remove(), 500);
+      el.style.visibility = 'hidden';
     });
-    document.querySelectorAll('.hero').forEach(el => el.classList.add('loaded'));
   }
-  if (document.readyState === 'complete') {
-    hideLoader();
-  } else {
-    window.addEventListener('load', hideLoader);
-    // Fallback: force-hide after 3s max
-    setTimeout(hideLoader, 3000);
-  }
+  // Backup: if page is cached/loaded fast, hide after 500ms
+  setTimeout(forceHideLoader, 500);
+  // Backup on window load
+  window.addEventListener('load', forceHideLoader);
 
   // ── Nav scroll ──
   window.addEventListener('scroll', () => {
