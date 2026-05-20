@@ -104,7 +104,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "221"
+    "reviewCount": "241"
   }
 }</script>
 .services-hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);padding:120px 24px 60px;text-align:center;color:#fff}
@@ -252,21 +252,19 @@ function transitionPage(url) { document.body.style.opacity='0'; setTimeout(()=>{
 document.addEventListener('DOMContentLoaded', function(){
 
   // ── Page loader ──
-  function hideLoader() {
+  // Loader hides automatically via CSS animation after 0.8s
+  // This is the backup JS trigger in case CSS animation fails
+  function forceHideLoader() {
     document.querySelectorAll('.page-loader').forEach(el => {
-      el.style.transition = 'opacity 0.5s ease';
+      el.style.animation = 'none';
       el.style.opacity = '0';
-      setTimeout(() => el.remove(), 500);
+      el.style.visibility = 'hidden';
     });
-    document.querySelectorAll('.hero').forEach(el => el.classList.add('loaded'));
   }
-  if (document.readyState === 'complete') {
-    hideLoader();
-  } else {
-    window.addEventListener('load', hideLoader);
-    // Fallback: force-hide after 3s max
-    setTimeout(hideLoader, 3000);
-  }
+  // Backup: if page is cached/loaded fast, hide after 500ms
+  setTimeout(forceHideLoader, 500);
+  // Backup on window load
+  window.addEventListener('load', forceHideLoader);
 
   // ── Nav scroll ──
   window.addEventListener('scroll', () => {
