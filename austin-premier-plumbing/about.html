@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Austin Premier Plumbing | Austin Plumbing</title>
-<meta name="description" content="About Austin Premier Plumbing — Professional plumbing in Austin, TX. 47+ years experience, 583+ customers served. Free estimates.">
+<meta name="description" content="About Austin Premier Plumbing — Professional plumbing in Austin, TX. 107+ years experience, 848+ customers served. Free estimates.">
 <!-- Preload critical resources-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,7 +103,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "370"
+    "reviewCount": "313"
   }
 }</script>
 .about-hero{position:relative;padding:140px 24px 80px;overflow:hidden;background:linear-gradient(135deg,#2563eb,#1d4ed8)}
@@ -157,9 +157,9 @@
 
 <section class="section">
   <div class="stats-row reveal stagger">
-    <div class="stat-item"><div class="stat-number">47+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">Years Experience</div></div>
-    <div class="stat-item"><div class="stat-number">583+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">Happy Customers</div></div>
-    <div class="stat-item"><div class="stat-number">247+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">5-Star Reviews</div></div>
+    <div class="stat-item"><div class="stat-number">107+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-item"><div class="stat-number">848+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">Happy Customers</div></div>
+    <div class="stat-item"><div class="stat-number">328+</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">5-Star Reviews</div></div>
     <div class="stat-item"><div class="stat-number">100%</div><div class="stat-divider" style="background:rgba(255,255,255,0.3);margin:0 auto 12px"></div><div class="stat-label">Satisfaction</div></div>
   </div>
 </section>
@@ -257,21 +257,19 @@ function transitionPage(url) { document.body.style.opacity='0'; setTimeout(()=>{
 document.addEventListener('DOMContentLoaded', function(){
 
   // ── Page loader ──
-  function hideLoader() {
+  // Loader hides automatically via CSS animation after 0.8s
+  // This is the backup JS trigger in case CSS animation fails
+  function forceHideLoader() {
     document.querySelectorAll('.page-loader').forEach(el => {
-      el.style.transition = 'opacity 0.5s ease';
+      el.style.animation = 'none';
       el.style.opacity = '0';
-      setTimeout(() => el.remove(), 500);
+      el.style.visibility = 'hidden';
     });
-    document.querySelectorAll('.hero').forEach(el => el.classList.add('loaded'));
   }
-  if (document.readyState === 'complete') {
-    hideLoader();
-  } else {
-    window.addEventListener('load', hideLoader);
-    // Fallback: force-hide after 3s max
-    setTimeout(hideLoader, 3000);
-  }
+  // Backup: if page is cached/loaded fast, hide after 500ms
+  setTimeout(forceHideLoader, 500);
+  // Backup on window load
+  window.addEventListener('load', forceHideLoader);
 
   // ── Nav scroll ──
   window.addEventListener('scroll', () => {
