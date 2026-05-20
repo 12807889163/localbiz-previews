@@ -103,7 +103,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "312"
+    "reviewCount": "363"
   }
 }</script>
 .contact-hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);padding:120px 24px 60px;text-align:center;color:#fff}
@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="map-container reveal">
-        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80&auto=format" alt="Service area — Austin, TX" loading="lazy">
+        <img src="https://www.openstreetmap.org/export/embed.html?bbox=-97.5,30.0,-97.0,30.5&layer=mapnik" alt="Service area — Austin, TX" loading="lazy">
       </div>
     </div>
 
@@ -280,10 +280,21 @@ function transitionPage(url) { document.body.style.opacity='0'; setTimeout(()=>{
 document.addEventListener('DOMContentLoaded', function(){
 
   // ── Page loader ──
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.page-loader').forEach(el => el.classList.add('hidden'));
+  function hideLoader() {
+    document.querySelectorAll('.page-loader').forEach(el => {
+      el.style.transition = 'opacity 0.5s ease';
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 500);
+    });
     document.querySelectorAll('.hero').forEach(el => el.classList.add('loaded'));
-  });
+  }
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+    // Fallback: force-hide after 3s max
+    setTimeout(hideLoader, 3000);
+  }
 
   // ── Nav scroll ──
   window.addEventListener('scroll', () => {
