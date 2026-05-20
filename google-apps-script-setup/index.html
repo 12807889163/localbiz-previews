@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Apps Script Setup — Orange Agency</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #334155; line-height: 1.6; }
+    .container { max-width: 760px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+    .header { background: linear-gradient(135deg, #0ea5e9, #0369a1); padding: 40px 48px; }
+    .header h1 { color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .header p { color: rgba(255,255,255,0.85); font-size: 15px; }
+    .body { padding: 40px 48px; }
+    .step { margin-bottom: 36px; }
+    .step-num { display: inline-block; width: 28px; height: 28px; background: #0ea5e9; color: #fff; border-radius: 50%; text-align: center; line-height: 28px; font-size: 14px; font-weight: 700; margin-right: 10px; vertical-align: middle; }
+    .step h2 { display: inline; font-size: 18px; font-weight: 700; color: #0f172a; }
+    .step p { margin-top: 10px; color: #475569; font-size: 15px; }
+    .step a { color: #0ea5e9; text-decoration: none; }
+    .step a:hover { text-decoration: underline; }
+    .code-block { background: #1e293b; color: #e2e8f0; border-radius: 8px; padding: 20px 24px; margin-top: 12px; font-family: 'Courier New', monospace; font-size: 13.5px; line-height: 1.7; white-space: pre; overflow-x: auto; }
+    .code-block .comment { color: #64748b; }
+    .code-block .keyword { color: #f472b6; }
+    .code-block .string { color: #86efac; }
+    .code-block .fn { color: #7dd3fc; }
+    .note { background: #fef9c3; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #713f12; }
+    .warning { background: #fee2e2; border: 1px solid #fca5a5; border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #991b1b; }
+    .success { background: #dcfce7; border: 1px solid #86efac; border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #166534; }
+    .footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 48px; text-align: center; }
+    .footer p { font-size: 13px; color: #94a3b8; }
+    .footer a { color: #0ea5e9; text-decoration: none; }
+    .copy-btn { display: inline-block; background: #334155; color: #e2e8f0; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; cursor: pointer; margin-top: 10px; }
+    .copy-btn:hover { background: #475569; }
+    .copy-btn.copied { background: #166534; }
+    @media (max-width: 600px) { .container { margin: 0; border-radius: 0; } .body, .header, .footer { padding: 28px 24px; } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📧 Google Apps Script Setup</h1>
+    <p>Step-by-step guide to enable form email submissions for Orange Agency</p>
+  </div>
+
+  <div class="body">
+
+    <!-- Step 1 -->
+    <div class="step">
+      <h2><span class="step-num">1</span>Open Google Apps Script</h2>
+      <p>Go to <a href="https://script.google.com" target="_blank">script.google.com</a> and sign in with your Google account.</p>
+      <p>Click the <strong>+ New project</strong> button.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <h2><span class="step-num">2</span>Paste the Apps Script Code</h2>
+      <p>Delete any code already in the editor. Then copy the code below and paste it in:</p>
+
+      <button class="copy-btn" onclick="copyCode(this)">📋 Copy Code</button>
+      <div class="code-block" id="scriptCode"><span class="comment">// ============================================================</span>
+<span class="comment">// Orange Agency — Info Form Email Receiver</span>
+<span class="comment">// Paste this entire code into script.google.com</span>
+<span class="comment">// ============================================================</span>
+
+<span class="keyword">const</span> RECIPIENT_EMAIL = <span class="string">'john@orangeagency.media'</span>;
+<span class="keyword">const</span> SENDER_NAME = <span class="string">'Orange Agency Form'</span>;
+
+<span class="comment">// Called when the web app receives a POST request</span>
+<span class="keyword">function</span> <span class="fn">doPost</span>(e) {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> payload = JSON.parse(e.postData.contents);
+
+    <span class="keyword">const</span> subject = payload.business_name
+      ? <span class="string">`🌐 New Website Info — </span><span class="string">${payload.business_name}</span><span class="string">`</span>
+      : <span class="string">'🌐 New Website Info Submission'</span>;
+
+    <span class="keyword">let</span> body = <span class="string">'=== ORANGE AGENCY — WEBSITE INFO FORM ===\n\n'</span>;
+
+    <span class="keyword">const</span> fields = [
+      [<span class="string">'Business Name'</span>, payload.business_name],
+      [<span class="string">'Contact Name'</span>, payload.contact_name],
+      [<span class="string">'Phone'</span>, payload.phone],
+      [<span class="string">'Email'</span>, payload.email],
+      [<span class="string">'Address / Service Area'</span>, payload.address],
+      [<span class="string">'Preferred Domain'</span>, payload.domain],
+      [<span class="string">'Google Business Profile'</span>, payload.google_business],
+      [<span class="string">'Testimonials'</span>, payload.testimonials],
+      [<span class="string">'Extra Requests'</span>, payload.extra],
+      [<span class="string">'Source URL'</span>, payload.source],
+      [<span class="string">'Submitted At'</span>, payload.submittedAt],
+    ];
+
+    fields.forEach(([label, value]) => {
+      <span class="keyword">if</span> (value) {
+        body += <span class="string">`</span><span class="string">${label}</span><span class="string">: </span><span class="string">${value}</span><span class="string">\n`</span>;
+      }
+    });
+
+    body += <span class="string">'\n--- End of Submission ---\n'</span>;
+
+    <span class="fn">MailApp.sendEmail</span>(RECIPIENT_EMAIL, subject, body, {
+      name: SENDER_NAME,
+      noReply: <span class="keyword">true</span>,
+    });
+
+    <span class="keyword">return</span> <span class="fn">ContentService</span>
+      .createTextOutput(JSON.stringify({ status: <span class="string">'success'</span> }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } <span class="keyword">catch</span>(error) {
+    <span class="keyword">return</span> <span class="fn">ContentService</span>
+      .createTextOutput(JSON.stringify({ status: <span class="string">'error'</span>, message: error.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+<span class="comment">// Test function — run this to verify email sending works</span>
+<span class="keyword">function</span> <span class="fn">testEmail</span>() {
+  <span class="fn">MailApp.sendEmail</span>(
+    RECIPIENT_EMAIL,
+    <span class="string">'✅ Test Email from Apps Script'</span>,
+    <span class="string">'Google Apps Script is configured correctly!'</span>,
+    { name: SENDER_NAME }
+  );
+  Logger.log(<span class="string">'Test email sent.'</span>);
+}</div>
+
+      <p style="margin-top:12px;font-size:14px;color:#64748b;">Tip: Click <strong>"+ New project"</strong> first, then paste. The default <code>myFunction</code> can be deleted.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <h2><span class="step-num">3</span>Save and Name the Project</h2>
+      <p>Click the <strong>Untitled project</strong> text at the top left, rename it to something like <strong>Orange Agency Form</strong>, and click <strong>Rename</strong>.</p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <h2><span class="step-num">4</span>Deploy as Web App</h2>
+      <p>At the top right, click <strong>Deploy ▼</strong> → <strong>New deployment</strong>.</p>
+      <p>In the deployment panel:</p>
+      <ul style="margin-top:8px;margin-left:20px;font-size:14px;color:#475569;">
+        <li>Click the <strong>Select type</strong> gear icon → choose <strong>Web app</strong></li>
+        <li><strong>Description:</strong> "Info Form Receiver"</li>
+        <li><strong>Execute as:</strong> Me (your Google account)</li>
+        <li><strong>Who has access:</strong> <strong>Anyone</strong></li>
+      </ul>
+      <div class="note">
+        ⚠️ <strong>Important:</strong> "Anyone" means anyone with the URL can submit the form. This is correct — the form is public-facing. The script only sends email; it doesn't expose your Gmail credentials.
+      </div>
+      <p style="margin-top:12px;">Click <strong>Deploy</strong>. Google will ask you to authorize permissions — click <strong>Authorize</strong> and grant access (it needs to send email on your behalf).</p>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <h2><span class="step-num">5</span>Copy the Web App URL</h2>
+      <p>After deploying, you'll see a <strong>✅ Web app deployed</strong> screen with a URL that looks like:</p>
+      <div class="code-block">https://script.google.com/macros/s/XXXXXXXXXXXXXXX/exec</div>
+      <p style="margin-top:8px;">Copy that URL — you'll need it for the next step.</p>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step">
+      <h2><span class="step-num">6</span>Add the URL to the Form</h2>
+      <p>Open <code>info_request_form.html</code> in a code editor and find this line near the bottom:</p>
+      <div class="code-block"><span class="keyword">const</span> GOOGLE_SCRIPT_URL = <span class="string">'YOUR_GOOGLE_SCRIPT_URL'</span>;</div>
+      <p style="margin-top:8px;">Replace <code>YOUR_GOOGLE_SCRIPT_URL</code> with your actual web app URL, for example:</p>
+      <div class="code-block"><span class="keyword">const</span> GOOGLE_SCRIPT_URL = <span class="string">'https://script.google.com/macros/s/XXXXXXXXXXXXXXX/exec'</span>;</div>
+      <div class="success" style="margin-top:14px;">
+        ✅ That's it! Form submissions will now be sent directly to <strong>john@orangeagency.media</strong>.
+      </div>
+    </div>
+
+    <!-- Step 7: Test -->
+    <div class="step">
+      <h2><span class="step-num">7</span>Test It</h2>
+      <p>Open the form in your browser (you can open it directly from the HTML file). Fill it out and submit — you should receive an email within seconds.</p>
+      <p>If you don't want to wait for a real submission, click the <strong>Run testEmail</strong> button in the Apps Script editor (the play ▶ button) to send a test message immediately.</p>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="step">
+      <h2>🔧 Troubleshooting</h2>
+      <p><strong>Not receiving emails?</strong></p>
+      <ul style="margin-top:6px;margin-left:20px;font-size:14px;color:#475569;">
+        <li>Make sure you set "Who has access" to <strong>Anyone</strong> during deployment</li>
+        <li>Check your <strong>spam/junk</strong> folder</li>
+        <li>Run the <code>testEmail()</code> function from the editor to verify sending works</li>
+        <li>Re-deploy after making code changes (create a <strong>New deployment</strong> to get a new URL)</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Need to update the recipient email?</strong></p>
+      <p style="margin-top:4px;margin-left:20px;font-size:14px;color:#475569;">Edit the <code>RECIPIENT_EMAIL</code> constant at the top of the Apps Script and create a new deployment.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Questions? Contact John at <a href="mailto:john@orangeagency.media">john@orangeagency.media</a></p>
+    <p style="margin-top:4px;">— Orange Agency</p>
+  </div>
+</div>
+
+<script>
+function copyCode(btn) {
+  const code = document.getElementById('scriptCode').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copy Code';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
