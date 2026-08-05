@@ -130,11 +130,12 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 .faq-question{width:100%;text-align:left;padding:22px 28px;background:none;border:none;font-family:var(--font-display);font-size:0.975rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.2s}
 .faq-question:hover{background:var(--light)}
 .faq-question svg{transition:transform 0.3s;flex-shrink:0;color:var(--primary)}
-.faq-question>span{flex:1;text-align:left}
+.faq-question>.faq-q{flex:1;text-align:left}
 .faq-item.open .faq-question svg{transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
-.faq-item.open .faq-answer{max-height:600px}
-.faq-answer-inner{padding:0 28px 22px;color:var(--muted);line-height:1.7;font-size:0.925rem}
+.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s ease}
+.faq-answer-inner{overflow:hidden;padding:0 28px;color:var(--muted);line-height:1.7;font-size:0.925rem;transition:padding 0.3s ease}
+.faq-item.open .faq-answer{grid-template-rows:1fr}
+.faq-item.open .faq-answer-inner{padding:0 28px 22px}
 
 /* AREA */
 .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
@@ -306,7 +307,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
           <div class="hc-icon">
             <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
           </div>
-          <div class="hc-text"><strong>5-Star Rated</strong><span>150+ Reviews</span></div>
+          <div class="hc-text"><strong>5-Star Rated</strong><span>200+ Reviews</span></div>
         </div>
         <div class="hero-card-stat">
           <div class="hc-icon">
@@ -423,9 +424,9 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 <!-- STATS -->
 <div class="stats-section">
   <div class="stats-inner">
-    <div class="stat-box"><div class="number">10+</div><div class="divider"></div><div class="label">Years in Business</div></div>
-    <div class="stat-box"><div class="number">1,000+</div><div class="divider"></div><div class="label">Jobs Completed</div></div>
-    <div class="stat-box"><div class="number">150+</div><div class="divider"></div><div class="label">5-Star Reviews</div></div>
+    <div class="stat-box"><div class="number">12+</div><div class="divider"></div><div class="label">Years in Business</div></div>
+    <div class="stat-box"><div class="number">500+</div><div class="divider"></div><div class="label">Jobs Completed</div></div>
+    <div class="stat-box"><div class="number">200+</div><div class="divider"></div><div class="label">5-Star Reviews</div></div>
     <div class="stat-box"><div class="number">100%</div><div class="divider"></div><div class="label">Satisfaction Rate</div></div>
   </div>
 </div>
@@ -639,48 +640,42 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
   <div class="faq-list">
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>How fast can we launch?</span>
+      <button class="faq-question" type="button"><span class="faq-q">How fast can we launch?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Most engagements launch in 14 to 21 days from kickoff. The intake call alone usually surfaces three or four immediate wins.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>Do you require long-term contracts?</span>
+      <button class="faq-question" type="button"><span class="faq-q">Do you require long-term contracts?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">No. Engagements are month-to-month after the initial 90-day build. We earn the next month by the results we deliver.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>What do you actually deliver?</span>
+      <button class="faq-question" type="button"><span class="faq-q">What do you actually deliver?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">A working revenue system: website, SEO foundation, lead pipeline, automations, tracking, and weekly reporting.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>How do you measure success?</span>
+      <button class="faq-question" type="button"><span class="faq-q">How do you measure success?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Qualified leads, booked calls, and cost per acquisition, not vanity metrics. You get a weekly dashboard.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>Will I own the assets?</span>
+      <button class="faq-question" type="button"><span class="faq-q">Will I own the assets?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Yes. Website, content, automations, accounts, and data are all yours at every point.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
-        <span>What if I already have marketing in place?</span>
+      <button class="faq-question" type="button"><span class="faq-q">What if I already have marketing in place?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">We audit first, then keep what works and replace what does not. We will not throw away working spend.</div></div>
@@ -781,24 +776,31 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 </footer>
 
 <script>
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-answer');
-    const isOpen = item.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-answer').style.maxHeight = null;
+function initFAQ(){
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+      const answer = item.querySelector('.faq-answer');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        const a = i.querySelector('.faq-answer');
+        if (a) a.style.maxHeight = '';
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
     });
-    // Open clicked if was closed
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
   });
-});
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFAQ);
+} else {
+  initFAQ();
+}
 
 // Smooth scroll for nav links
 document.querySelectorAll('.nav-links a, .nav-cta').forEach(a => {
