@@ -21,18 +21,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#e85d04;--secondary:#c2410c;--text:#1a1a2e;--muted:#64748b;--light:#f8fafc;--white:#fff;--radius:16px;--shadow:0 4px 24px rgba(0,0,0,0.08);--shadow-lg:0 12px 48px rgba(0,0,0,0.14);--glass:rgba(255,255,255,0.92)}
+:root{--primary:#e85d04;--secondary:#c2410c;--font-display:'Sora',sans-serif;--font-body:'Inter',sans-serif;--text:#1a1a2e;--muted:#64748b;--light:#f8fafc;--white:#fff;--radius:16px;--shadow:0 4px 24px rgba(0,0,0,0.08);--shadow-lg:0 12px 48px rgba(0,0,0,0.14);--glass:rgba(255,255,255,0.92)}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.2}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2}
 a{text-decoration:none}img{max-width:100%;display:block}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:var(--glass);border-bottom:1px solid rgba(0,0,0,0.06);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
-.nav-logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;color:var(--primary);display:flex;align-items:center;gap:8px}
+.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--primary);display:flex;align-items:center;gap:8px}
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--text);font-weight:500;font-size:0.9rem;transition:color 0.2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
@@ -100,7 +100,7 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 .stats-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,<svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='%23ffffff' fill-opacity='0.05'><path d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/></g></g></svg>");opacity:1}
 .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;position:relative}
 .stat-box{color:#fff}
-.stat-box .number{font-family:'Poppins',sans-serif;font-size:3rem;font-weight:800;line-height:1;margin-bottom:8px}
+.stat-box .number{font-family:var(--font-display);font-size:3rem;font-weight:800;line-height:1;margin-bottom:8px}
 .stat-box .label{color:rgba(255,255,255,0.8);font-size:0.925rem;font-weight:500}
 .stat-box .divider{width:36px;height:3px;background:rgba(255,255,255,0.35);border-radius:2px;margin:0 auto 14px}
 
@@ -116,7 +116,7 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 .testimonials-bg{background:var(--light);padding:80px 24px}
 .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;max-width:1200px;margin:0 auto}
 .testimonial-card{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04);position:relative}
-.testimonial-card::before{content:'C';font-family:'Poppins',sans-serif;font-size:5.5rem;color:var(--primary);opacity:0.1;position:absolute;top:-8px;left:20px;line-height:1}
+.testimonial-card::before{content:'C';font-family:var(--font-display);font-size:5.5rem;color:var(--primary);opacity:0.1;position:absolute;top:-8px;left:20px;line-height:1}
 .stars{color:#f59e0b;margin-bottom:16px;font-size:1rem;letter-spacing:2px}
 .testimonial-card p{color:var(--text);font-size:0.95rem;line-height:1.7;margin-bottom:20px;font-style:italic}
 .testimonial-author{display:flex;align-items:center;gap:12px}
@@ -127,7 +127,7 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 /* FAQ */
 .faq-list{max-width:800px;margin:0 auto}
 .faq-item{background:#fff;border-radius:var(--radius);margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.04);overflow:hidden;border:1px solid rgba(0,0,0,0.04)}
-.faq-question{width:100%;text-align:left;padding:22px 28px;background:none;border:none;font-family:'Poppins',sans-serif;font-size:0.975rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.2s}
+.faq-question{width:100%;text-align:left;padding:22px 28px;background:none;border:none;font-family:var(--font-display);font-size:0.975rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.2s}
 .faq-question:hover{background:var(--light)}
 .faq-question svg{transition:transform 0.3s;flex-shrink:0;color:var(--primary)}
 .faq-item.open .faq-question svg{transform:rotate(45deg)}
@@ -157,7 +157,7 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 /* FOOTER */
 footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.footer-logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:12px;display:block}
+.footer-logo{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:12px;display:block}
 .footer-brand p{font-size:0.875rem;line-height:1.7;max-width:340px}
 .footer-col h4{color:#fff;font-size:0.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
 .footer-col a{display:block;color:rgba(255,255,255,0.55);font-size:0.875rem;padding:3px 0;transition:color 0.2s}
@@ -166,12 +166,12 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 .mission-band{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;padding:48px 24px;margin:0}
 .mission-inner{max-width:900px;margin:0 auto;text-align:center}
 .mission-inner .section-label{-webkit-text-fill-color:#fff;color:#fff;background:none}
-.mission-text{font-family:'Poppins',sans-serif;font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:600;line-height:1.4;margin-top:8px;color:#fff}
+.mission-text{font-family:var(--font-display);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:600;line-height:1.4;margin-top:8px;color:#fff}
 
 /* PROCESS */
 .process-grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto}
 .process-card{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04);position:relative}
-.process-step{font-family:'Poppins',sans-serif;font-weight:800;color:var(--primary);font-size:1.6rem;letter-spacing:0.5px;margin-bottom:10px;opacity:0.85}
+.process-step{font-family:var(--font-display);font-weight:800;color:var(--primary);font-size:1.6rem;letter-spacing:0.5px;margin-bottom:10px;opacity:0.85}
 .process-card h3{font-size:1.05rem;margin-bottom:8px}
 .process-card p{color:var(--muted);font-size:0.92rem;line-height:1.65}
 
@@ -180,7 +180,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 .proof-bg>.section-header{max-width:1200px;margin:0 auto 40px}
 .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1100px;margin:0 auto}
 .proof-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border-top:3px solid var(--primary)}
-.proof-metric{font-family:'Poppins',sans-serif;font-weight:700;color:var(--text);font-size:1rem;margin-bottom:12px}
+.proof-metric{font-family:var(--font-display);font-weight:700;color:var(--text);font-size:1rem;margin-bottom:12px}
 .proof-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;font-size:0.9rem;color:var(--muted);border-bottom:1px solid rgba(0,0,0,0.06)}
 .proof-row strong{color:var(--text);font-weight:700}
 .proof-after{color:var(--primary)}
@@ -192,12 +192,12 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 .case-card{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
 .case-tag{display:inline-block;background:var(--accent);color:var(--ink);font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:6px;margin-bottom:12px}
 .case-card h3{font-size:1.05rem;margin-bottom:10px;color:var(--text)}
-.case-result{font-family:'Poppins',sans-serif;font-weight:700;color:var(--primary);font-size:0.95rem}
+.case-result{font-family:var(--font-display);font-weight:700;color:var(--primary);font-size:0.95rem}
 
 /* FOUNDER */
 .founder-section{padding-top:40px;padding-bottom:80px}
 .founder-card{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;max-width:780px;margin:0 auto;background:var(--light);border-radius:var(--radius);padding:28px}
-.founder-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem}
+.founder-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:1.3rem}
 .founder-meta h3{margin-bottom:4px}
 .founder-role{font-size:0.85rem;color:var(--primary);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
 .founder-meta p{color:var(--muted);font-size:0.95rem;line-height:1.7}
@@ -265,22 +265,22 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
       <div class="hero-trust">
         
         <div class="trust-chip">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           Strategy First
         </div>
         
         <div class="trust-chip">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           Real Numbers
         </div>
         
         <div class="trust-chip">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           14-21 Day Launch
         </div>
         
         <div class="trust-chip">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           Weekly Reporting
         </div>
         
@@ -304,7 +304,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
           <div class="hc-icon">
             <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
           </div>
-          <div class="hc-text"><strong>5-Star Rated</strong><span>300+ Reviews</span></div>
+          <div class="hc-text"><strong>5-Star Rated</strong><span>150+ Reviews</span></div>
         </div>
         <div class="hero-card-stat">
           <div class="hc-icon">
@@ -323,28 +323,28 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
     
     <div class="trust-big">
       <div class="icon-circle">
-        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
       </div>
       Strategy First
     </div>
     
     <div class="trust-big">
       <div class="icon-circle">
-        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
       </div>
       Real Numbers
     </div>
     
     <div class="trust-big">
       <div class="icon-circle">
-        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
       </div>
       14-21 Day Launch
     </div>
     
     <div class="trust-big">
       <div class="icon-circle">
-        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
       </div>
       Weekly Reporting
     </div>
@@ -421,9 +421,9 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 <!-- STATS -->
 <div class="stats-section">
   <div class="stats-inner">
-    <div class="stat-box"><div class="number">10+</div><div class="divider"></div><div class="label">Years in Business</div></div>
-    <div class="stat-box"><div class="number">750+</div><div class="divider"></div><div class="label">Jobs Completed</div></div>
-    <div class="stat-box"><div class="number">300+</div><div class="divider"></div><div class="label">5-Star Reviews</div></div>
+    <div class="stat-box"><div class="number">12+</div><div class="divider"></div><div class="label">Years in Business</div></div>
+    <div class="stat-box"><div class="number">1,000+</div><div class="divider"></div><div class="label">Jobs Completed</div></div>
+    <div class="stat-box"><div class="number">150+</div><div class="divider"></div><div class="label">5-Star Reviews</div></div>
     <div class="stat-box"><div class="number">100%</div><div class="divider"></div><div class="label">Satisfaction Rate</div></div>
   </div>
 </div>
@@ -436,26 +436,31 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
     <p>Orange Agency builds revenue systems for local service businesses: conversion-focused websites, local SEO, AI-assisted lead generation, and automated follow-up. The goal is simple — create more qualified opportunities and make sure fewer of them fall through the cracks.</p>
   </div>
   <div class="why-grid">
+    
     <div class="why-card">
-      <div class="why-icon">⏱️</div>
-      <h3>On-Time, Every Time</h3>
-      <p>We respect your schedule and show up when we say we will — no excuses, no no-shows.</p>
+      <div class="why-icon">✦</div>
+      <h3>Strategy First</h3>
+      <p>Built into every engagement we take on, end to end.</p>
     </div>
+    
     <div class="why-card">
-      <div class="why-icon">💰</div>
-      <h3>Upfront Pricing</h3>
-      <p>You get a clear quote before we start. No surprises, no hidden fees on the final bill.</p>
+      <div class="why-icon">✦</div>
+      <h3>Real Numbers</h3>
+      <p>Built into every engagement we take on, end to end.</p>
     </div>
+    
     <div class="why-card">
-      <div class="why-icon">🏆</div>
-      <h3>Quality Guarantee</h3>
-      <p>We stand behind our work. If something is not right, we will make it right — on our dime.</p>
+      <div class="why-icon">✦</div>
+      <h3>14-21 Day Launch</h3>
+      <p>Built into every engagement we take on, end to end.</p>
     </div>
+    
     <div class="why-card">
-      <div class="why-icon">👷</div>
-      <h3>Trained Professionals</h3>
-      <p>Our team is fully trained, licensed, and equipped to handle any job — big or small.</p>
+      <div class="why-icon">✦</div>
+      <h3>Weekly Reporting</h3>
+      <p>Built into every engagement we take on, end to end.</p>
     </div>
+    
   </div>
 </section>
 
@@ -633,50 +638,50 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        How fast can we launch?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Most engagements launch in 14 to 21 days from kickoff. The intake call alone usually surfaces three or four immediate wins.</div></div>
     </div>
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        Do you require long-term contracts?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">No. Engagements are month-to-month after the initial 90-day build. We earn the next month by the results we deliver.</div></div>
     </div>
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        What do you actually deliver?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">A working revenue system: website, SEO foundation, lead pipeline, automations, tracking, and weekly reporting.</div></div>
     </div>
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        How do you measure success?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Qualified leads, booked calls, and cost per acquisition, not vanity metrics. You get a weekly dashboard.</div></div>
     </div>
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        Will I own the assets?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. Website, content, automations, accounts, and data are all yours at every point.</div></div>
     </div>
     
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        q
+        What if I already have marketing in place?
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
-      <div class="faq-answer"><div class="faq-answer-inner">a</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">We audit first, then keep what works and replace what does not. We will not throw away working spend.</div></div>
     </div>
     
   </div>
