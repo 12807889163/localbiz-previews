@@ -130,8 +130,10 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdro
 .faq-question{width:100%;text-align:left;padding:22px 28px;background:none;border:none;font-family:var(--font-display);font-size:0.975rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.2s}
 .faq-question:hover{background:var(--light)}
 .faq-question svg{transition:transform 0.3s;flex-shrink:0;color:var(--primary)}
+.faq-question>span{flex:1;text-align:left}
 .faq-item.open .faq-question svg{transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-item.open .faq-answer{max-height:600px}
 .faq-answer-inner{padding:0 28px 22px;color:var(--muted);line-height:1.7;font-size:0.925rem}
 
 /* AREA */
@@ -421,7 +423,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
 <!-- STATS -->
 <div class="stats-section">
   <div class="stats-inner">
-    <div class="stat-box"><div class="number">12+</div><div class="divider"></div><div class="label">Years in Business</div></div>
+    <div class="stat-box"><div class="number">10+</div><div class="divider"></div><div class="label">Years in Business</div></div>
     <div class="stat-box"><div class="number">1,000+</div><div class="divider"></div><div class="label">Jobs Completed</div></div>
     <div class="stat-box"><div class="number">150+</div><div class="divider"></div><div class="label">5-Star Reviews</div></div>
     <div class="stat-box"><div class="number">100%</div><div class="divider"></div><div class="label">Satisfaction Rate</div></div>
@@ -637,48 +639,48 @@ footer{background:#0f172a;color:rgba(255,255,255,0.55);padding:48px 24px 28px}
   <div class="faq-list">
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        How fast can we launch?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>How fast can we launch?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Most engagements launch in 14 to 21 days from kickoff. The intake call alone usually surfaces three or four immediate wins.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        Do you require long-term contracts?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>Do you require long-term contracts?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">No. Engagements are month-to-month after the initial 90-day build. We earn the next month by the results we deliver.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        What do you actually deliver?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>What do you actually deliver?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">A working revenue system: website, SEO foundation, lead pipeline, automations, tracking, and weekly reporting.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        How do you measure success?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>How do you measure success?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Qualified leads, booked calls, and cost per acquisition, not vanity metrics. You get a weekly dashboard.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        Will I own the assets?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>Will I own the assets?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">Yes. Website, content, automations, accounts, and data are all yours at every point.</div></div>
     </div>
     
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        What if I already have marketing in place?
+      <button class="faq-question" type="button" onclick="this.closest('.faq-item').classList.toggle('open')">
+        <span>What if I already have marketing in place?</span>
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
       </button>
       <div class="faq-answer"><div class="faq-answer-inner">We audit first, then keep what works and replace what does not. We will not throw away working spend.</div></div>
