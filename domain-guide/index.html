@@ -31,6 +31,17 @@
     .intro-box p { font-size: 15px; color: #9a3412; margin: 0; }
     .intro-box strong { font-size: 16px; }
 
+    .note-box {
+      background: #f0f9ff;
+      border-left: 5px solid #0ea5e9;
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin: 0 0 28px;
+      font-size: 14px;
+    }
+    .note-box strong { color: #0c4a6e; display: block; margin-bottom: 6px; }
+    .note-box p { color: #0c4a6e; margin: 0; }
+
     .what-you-need {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
@@ -215,6 +226,11 @@
 
     <div class="intro-box">
       <p><strong>This guide walks you through connecting your own domain name</strong> (like <em>yourbusiness.com</em>) to your new website. We'll do this together, one click at a time. Don't worry — you don't need to know anything technical to follow along.</p>
+    </div>
+
+    <div class="note-box">
+      <strong>📝 A small note on URLs</strong>
+      <p>If you were told to look for your preview at <code>12807889183.github.io/localbiz-previews/&lt;your-slug&gt;/</code>, the actual URL uses <code>12807889163</code> (off by one — old typo we haven't fixed yet). Either works in the browser; the longer one is what you'll see in links we send. Your customer handoff email has the correct link.</p>
     </div>
 
     <div class="time-est">⏱️ Total time: about 15–25 minutes &nbsp;|&nbsp; 💰 Annual cost: ~$12/year for a <code>.com</code></div>
@@ -499,7 +515,7 @@
     <h2 id="s5">Step 5 — Tell Us You're Ready (we'll add you to GitHub)</h2>
 
     <div class="intro-box">
-      <p><strong>Important — please reply to your delivery email before doing Step 6.</strong> GitHub requires us to invite you to the repository by your email address. Once you reply, John will send the invite within a few business hours (usually much faster).</p>
+      <p><strong>Good news — the GitHub invite is now automated.</strong> As soon as you reply to your delivery email with the phrase "add me to github", "connect my domain", or anything similar, our system sends the GitHub collaborator invite within ~15 minutes (no waiting for John to be at his desk). The invite comes from <code>github.com</code>, not from <code>john@orangeagency.media</code>.</p>
     </div>
 
     <div class="step-card">
@@ -522,7 +538,7 @@
 
       <div class="warn-box">
         <strong>⏰ Why reply first?</strong>
-        <p>GitHub doesn't let us just hand over the site — they require the original account owner to invite you as a collaborator. We can only send that invite after we know which email address to send it to. So: <strong>reply first, then wait for the invite</strong>. We'll usually send it within a few hours during business days.</p>
+        <p>GitHub doesn't let us just hand over the site — they require the original account owner to invite you as a collaborator. We can only send that invite after we know which email address to send it to. Our system auto-detects the request whether you say "add me to github", "invite me to the repo", "connect my domain", or "help me set up the domain". Once detected, the invite fires automatically.</p>
       </div>
     </div>
 
@@ -540,7 +556,7 @@
         <div class="step-num">4</div>
         <h3>Accept the GitHub invitation</h3>
       </div>
-      <p>Within a few hours of your reply, you'll get an email from <strong>GitHub</strong> with subject "<em>[GitHub] You've been invited to join 12807889163/localbiz-previews</em>". Open it and click <span class="click">Accept Invitation</span>.</p>
+      <p>Within ~15 minutes of your reply, you'll get an email from <strong>GitHub</strong> with subject "<em>[GitHub] You've been invited to join 12807889163/localbiz-previews</em>". Open it and click <span class="click">Accept Invitation</span>.</p>
 
       <div class="shot">
         <div class="shot-header">
@@ -649,12 +665,14 @@
 
     <div class="ts-item">
       <h4>🔴 "I never got the GitHub invite email"</h4>
-      <p>Check your spam folder. If it's not there after 4 hours, reply to your delivery email again — sometimes the invite bounces silently.</p>
+      <p>Check your spam folder. If it's not there after 30 minutes, reply to your delivery email again — sometimes the invite bounces silently.</p>
     </div>
 
     <div class="ts-item">
       <h4>🔴 "I've waited 48 hours and nothing works"</h4>
-      <p>Reply to your delivery email and let us know. We'll help you figure out what's wrong — at no extra charge. That's what we do.</p>
+      <p>Run this in your terminal (Mac/Linux/WSL) to check what DNS thinks your domain points to:</p>
+      <div class="click-box"><p><code>dig yourbusiness.com +short A</code></p></div>
+      <p>You should see four IP addresses: <code>185.199.108.153</code>, <code>185.199.109.153</code>, <code>185.199.110.153</code>, <code>185.199.111.153</code>. If you see anything else (like Namecheap parking IPs or missing values), the DNS records are wrong. Reply to your delivery email with the dig output and we'll fix it for you — no extra charge.</p>
     </div>
 
     <div class="ts-item">
