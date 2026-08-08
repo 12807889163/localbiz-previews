@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>How to Connect Your Domain — Orange Agency</title>
+  <meta name="description" content="Step-by-step guide to buying a domain at Namecheap and pointing it at your new website hosted on GitHub Pages.">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; background: #fafaf9; color: #1c1917; line-height: 1.7; }
@@ -41,7 +42,7 @@
     .what-you-need ul li { font-size: 14px; color: #15803d; padding: 4px 0; padding-left: 22px; position: relative; }
     .what-you-need ul li::before { content: "✔"; position: absolute; left: 0; }
 
-    h2 { font-size: 22px; color: #0c0a09; margin: 40px 0 18px; padding-bottom: 10px; border-bottom: 2px solid #f5f5f4; }
+    h2 { font-size: 22px; color: #0c0a09; margin: 40px 0 18px; padding-bottom: 10px; border-bottom: 2px solid #f5f5f4; scroll-margin-top: 80px; }
     h2:first-of-type { margin-top: 0; }
     h3 { font-size: 16px; color: #1c1917; margin: 24px 0 10px; }
 
@@ -55,7 +56,6 @@
       margin-bottom: 28px;
     }
 
-    /* STEP CARD */
     .step-card {
       background: #fafaf9;
       border: 1px solid #e7e5e4;
@@ -74,7 +74,6 @@
     }
     .step-header h3 { margin: 0; font-size: 18px; color: #0c0a09; }
 
-    /* CLICK BOX */
     .click-box {
       background: #fff;
       border: 1px solid #d6d3d1;
@@ -87,20 +86,37 @@
     .click { color: #0369a1; font-weight: 600; }
     .menu-path { background: #f1f5f9; border-radius: 6px; padding: 2px 8px; font-size: 13px; color: #1e293b; font-family: 'Courier New', monospace; }
 
-    /* SCREENSHOT PLACEHOLDER */
-    .screenshot-placeholder {
-      background: linear-gradient(135deg, #f5f5f4, #e7e5e4);
+    /* SCREENSHOT MOCK — labeled as "Example UI" so customers know it's a guide illustration */
+    .shot {
+      background: #fff;
+      border: 1px solid #d6d3d1;
       border-radius: 10px;
-      padding: 36px 24px;
-      text-align: center;
       margin: 16px 0;
-      border: 1px dashed #c0b9b5;
+      overflow: hidden;
     }
-    .screenshot-placeholder .sc-icon { font-size: 32px; margin-bottom: 8px; }
-    .screenshot-placeholder .sc-title { font-size: 14px; font-weight: 700; color: #78716c; margin-bottom: 4px; }
-    .screenshot-placeholder .sc-desc { font-size: 13px; color: #a8a29e; margin: 0; }
+    .shot-header {
+      background: #f5f5f4;
+      border-bottom: 1px solid #e7e5e4;
+      padding: 8px 12px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: #57534e; font-family: 'Courier New', monospace;
+    }
+    .shot-header .dots { display: inline-flex; gap: 5px; }
+    .shot-header .dot { width: 10px; height: 10px; border-radius: 50%; background: #d6d3d1; }
+    .shot-header .dot.r { background: #ef4444; }
+    .shot-header .dot.y { background: #f59e0b; }
+    .shot-header .dot.g { background: #22c55e; }
+    .shot-url { flex: 1; text-align: center; color: #1e293b; }
+    .shot-body { padding: 18px 20px; background: #fff; }
+    .shot-body svg { display: block; width: 100%; height: auto; }
+    .shot-caption {
+      background: #fffbeb; border-top: 1px solid #fde68a;
+      padding: 8px 14px;
+      font-size: 12px; color: #92400e;
+      text-align: center;
+    }
+    .shot-caption strong { color: #78350f; }
 
-    /* DNS RECORD TABLE */
     .dns-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
     .dns-table th {
       background: #fafaf9; padding: 10px 16px; text-align: left;
@@ -109,8 +125,8 @@
     }
     .dns-table td { padding: 10px 16px; border: 1px solid #e7e5e4; color: #374151; font-size: 14px; }
     .dns-table tr:nth-child(even) td { background: #fafaf9; }
+    .dns-table code { background: #f5f5f4; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #1c1917; }
 
-    /* PLAIN ENGLISH BOX */
     .plain-english {
       background: #eff6ff;
       border: 1px solid #bfdbfe;
@@ -121,7 +137,6 @@
     .plain-english strong { font-size: 13px; color: #1e40af; display: block; margin-bottom: 4px; }
     .plain-english p { font-size: 14px; color: #1e3a8a; margin: 0; }
 
-    /* WARN / OK BOXES */
     .warn-box {
       background: #fef3c7; border: 1px solid #fde68a;
       border-radius: 10px; padding: 16px 20px;
@@ -140,7 +155,6 @@
     .ok-box p { color: #166534; margin-bottom: 4px; }
     .ok-box p:last-child { margin-bottom: 0; }
 
-    /* TROUBLESHOOTING */
     .ts-item {
       border-bottom: 1px solid #f5f5f4;
       padding: 16px 0;
@@ -166,6 +180,18 @@
     }
     .contact-box .email-link:hover { text-decoration: underline; }
 
+    .toc {
+      background: #f5f5f4;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .toc h3 { font-size: 14px; color: #57534e; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; }
+    .toc ol { padding-left: 24px; }
+    .toc li { font-size: 14px; color: #1c1917; padding: 4px 0; }
+    .toc a { color: #ea580c; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
     .footer { text-align: center; padding: 28px 24px; font-size: 13px; color: #a8a29e; }
     .footer a { color: #f97316; text-decoration: none; }
 
@@ -189,360 +215,512 @@
       <p><strong>This guide walks you through connecting your own domain name</strong> (like <em>yourbusiness.com</em>) to your new website. We'll do this together, one click at a time. Don't worry — you don't need to know anything technical to follow along.</p>
     </div>
 
-    <div class="time-est">⏱️ Total time: about 10–15 minutes &nbsp;|&nbsp; 💰 Annual cost: ~$12/year</div>
+    <div class="time-est">⏱️ Total time: about 15–25 minutes &nbsp;|&nbsp; 💰 Annual cost: ~$12/year for a <code>.com</code></div>
 
-    <!-- BEFORE YOU START -->
-    <h2>Before You Start</h2>
-    <div class="what-you-need">
-      <h3>Here's what you'll need:</h3>
-      <ul>
-        <li>Your domain name (e.g. <em>yourbusiness.com</em>) — if you haven't bought one yet, we'll cover that in Step 1</li>
-        <li>Login to your Namecheap account — or we'll create one together in Step 1</li>
-        <li>Access to your email inbox (we'll send you a link to get GitHub access)</li>
-        <li>About 10–15 minutes without interruptions</li>
-      </ul>
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+      <h3>On this page</h3>
+      <ol>
+        <li><a href="#s1">Create a Namecheap account &amp; buy your domain</a></li>
+        <li><a href="#s2">Find your domain in Namecheap</a></li>
+        <li><a href="#s3">Add the four DNS records (apex)</a></li>
+        <li><a href="#s4">Add the CNAME record (www)</a></li>
+        <li><a href="#s5">Tell us you're ready — get added to the GitHub repo</a></li>
+        <li><a href="#s6">Add your custom domain in GitHub Pages settings</a></li>
+        <li><a href="#s7">Enable HTTPS</a></li>
+        <li><a href="#s8">Troubleshooting</a></li>
+      </ol>
     </div>
 
     <!-- ================================================
-    STEP 1: CREATE NAMECHEAP ACCOUNT OR BUY DOMAIN
+    STEP 1: BUY A DOMAIN AT NAMECHEAP
     ================================================ -->
-    <h2>Step 1 — Create a Namecheap Account &amp; Buy Your Domain</h2>
+    <h2 id="s1">Step 1 — Create a Namecheap Account &amp; Buy Your Domain</h2>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">1</div>
-        <h3>Already have a Namecheap account?</h3>
+        <h3>Already have a domain?</h3>
       </div>
-      <p>If you already have a Namecheap account and a domain, skip ahead to <strong>Step 2</strong>. If not, keep reading — we'll create one together.</p>
+      <p>If you already own a domain (anywhere — GoDaddy, Cloudflare, Google Domains), you can skip to <strong>Step 3</strong>. The DNS records work the same way on every registrar. If you don't have one yet, keep reading.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">2</div>
-        <h3>Go to Namecheap and sign up</h3>
+        <h3>Go to Namecheap and search for your domain</h3>
       </div>
-      <p>Open your web browser and go to <strong>namecheap.com</strong>. Click the <span class="click">Sign Up</span> button in the top right corner.</p>
+      <p>Open your web browser and go to <strong>namecheap.com</strong>. You'll see a search bar in the middle of the homepage. Type the domain you want — for example, <strong>yourbusiness.com</strong> — and press <span class="click">Enter</span>.</p>
 
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">🖥️</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">Namecheap's homepage. Look for the "Sign Up" button in the top right — it's orange.</div>
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">namecheap.com</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Namecheap homepage with domain search">
+            <rect width="700" height="220" fill="#ffffff"/>
+            <rect x="0" y="0" width="700" height="48" fill="#0e1626"/>
+            <text x="20" y="30" fill="#f57b20" font-family="Arial, sans-serif" font-size="20" font-weight="700">namecheap</text>
+            <g transform="translate(440,16)">
+              <text x="0" y="14" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12">Domains</text>
+              <text x="80" y="14" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12">Hosting</text>
+              <text x="155" y="14" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12">Email</text>
+              <text x="215" y="14" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12">Marketing</text>
+              <text x="225" y="14" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12" opacity="0"></text>
+            </g>
+            <text x="610" y="30" fill="#cfd8dc" font-family="Arial, sans-serif" font-size="12">Sign in</text>
+            <g transform="translate(660,12)">
+              <rect width="32" height="24" rx="4" fill="#f57b20"/>
+              <text x="6" y="17" fill="#fff" font-family="Arial, sans-serif" font-size="11">Cart</text>
+            </g>
+            <rect x="80" y="110" width="540" height="58" rx="6" fill="#fff" stroke="#cfd8dc" stroke-width="2"/>
+            <text x="100" y="145" fill="#9ca3af" font-family="Arial, sans-serif" font-size="16">yourbusiness.com</text>
+            <rect x="540" y="115" width="74" height="48" rx="4" fill="#5db849"/>
+            <text x="555" y="145" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Search</text>
+            <text x="350" y="195" fill="#374151" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">Type your domain → press Enter</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — Namecheap homepage. The search bar is centered on the page.</div>
       </div>
 
-      <p>Fill in your details:</p>
-      <div class="click-box">
-        <p><span class="click">First Name</span> — type your first name</p>
-        <p><span class="click">Last Name</span> — type your last name</p>
-        <p><span class="click">Email Address</span> — use an email you check regularly (you'll need it to verify)</p>
-        <p><span class="click">Password</span> — choose a strong password you can remember</p>
+      <p>If the domain is available, Namecheap will show the price and offer an <span class="click">Add to Cart</span> button. If it's taken, you'll see suggestions for similar names.</p>
+
+      <div class="warn-box">
+        <strong>💰 Watch the renewal price, not just the first year</strong>
+        <p>Many registrars advertise a low first-year price (sometimes $1–3) that jumps to $15–25 on renewal. Namecheap's renewal for a <code>.com</code> is around $13/year. Read the "renewal" line under the price before checking out.</p>
       </div>
-      <p>Then click <span class="click">Create Account</span>. Namecheap will send a verification email — open it and click the link to confirm your account.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">3</div>
-        <h3>Search for your domain name</h3>
+        <h3>Create a free account and check out</h3>
       </div>
-      <p>Once you're logged in, you'll see a search bar on the Namecheap homepage. Type in the domain name you want — for example, <strong>yourbusiness.com</strong>.</p>
-      <p>Then press <span class="click">Search</span> or hit the Enter key on your keyboard.</p>
+      <p>Click <span class="click">Add to Cart</span> for the domain you want, then click the cart icon at the top right.</p>
+      <p>On the checkout page you'll be asked to either sign in or create an account. Creating an account is free — just an email and a password. You'll also need to add a payment method (credit/debit card or PayPal).</p>
 
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">🔍</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">A search results page showing whether your domain is available, how much it costs per year, and similar suggestions if your first choice is taken.</div>
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">namecheap.com/cart</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Namecheap shopping cart">
+            <rect width="700" height="200" fill="#fff"/>
+            <text x="40" y="40" fill="#111" font-family="Arial, sans-serif" font-size="18" font-weight="700">Shopping Cart</text>
+            <rect x="40" y="60" width="620" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+            <text x="60" y="96" fill="#111" font-family="Arial, sans-serif" font-size="15" font-weight="600">yourbusiness.com</text>
+            <text x="60" y="113" fill="#64748b" font-family="Arial, sans-serif" font-size="12">1 year • Auto-renew</text>
+            <text x="560" y="100" fill="#111" font-family="Arial, sans-serif" font-size="16" font-weight="700">$12.98/yr</text>
+            <rect x="500" y="150" width="160" height="36" rx="4" fill="#5db849"/>
+            <text x="555" y="173" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Continue to Checkout</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — Cart shows the renewal price, not just the first-year promo.</div>
       </div>
 
-      <p>Domains typically cost <strong>$10–15 per year</strong> for the first year. When you find one you like, click <span class="click">Add to Cart</span>, then click <span class="click">View Cart</span> in the popup.</p>
+      <p>Complete the payment. Once it goes through, Namecheap will email you a confirmation and your domain is officially yours.</p>
+    </div>
+
+    <!-- ================================================
+    STEP 2: FIND YOUR DOMAIN
+    ================================================ -->
+    <h2 id="s2">Step 2 — Find Your Domain in Namecheap</h2>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <h3>Log in and open your Domain List</h3>
+      </div>
+      <p>Go to <strong>namecheap.com</strong> and click <span class="click">Sign In</span> in the top right. Enter your email and password.</p>
+      <p>Once logged in, click your account name in the top right, then click <span class="click">Domain List</span> from the dropdown. You'll see a table of every domain you own.</p>
+
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">ap.namecheap.com/domains/list</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Namecheap domain list">
+            <rect width="700" height="200" fill="#fff"/>
+            <rect x="0" y="0" width="700" height="44" fill="#fff" stroke="#e2e8f0"/>
+            <text x="20" y="28" fill="#111" font-family="Arial, sans-serif" font-size="14" font-weight="700">Domain List</text>
+            <rect x="0" y="45" width="700" height="32" fill="#f1f5f9"/>
+            <text x="20" y="66" fill="#475569" font-family="Arial, sans-serif" font-size="11" font-weight="700">DOMAIN</text>
+            <text x="350" y="66" fill="#475569" font-family="Arial, sans-serif" font-size="11" font-weight="700">EXPIRES</text>
+            <text x="540" y="66" fill="#475569" font-family="Arial, sans-serif" font-size="11" font-weight="700">ACTIONS</text>
+            <rect x="0" y="77" width="700" height="46" fill="#fff"/>
+            <text x="20" y="106" fill="#111" font-family="Arial, sans-serif" font-size="14">yourbusiness.com</text>
+            <text x="350" y="106" fill="#111" font-family="Arial, sans-serif" font-size="13">2027-08-05</text>
+            <rect x="540" y="88" width="60" height="22" rx="4" fill="#fff" stroke="#0e1626"/>
+            <text x="558" y="103" fill="#0e1626" font-family="Arial, sans-serif" font-size="11" font-weight="600">Manage</text>
+            <rect x="610" y="88" width="60" height="22" rx="4" fill="#fff" stroke="#cbd5e1"/>
+            <text x="625" y="103" fill="#475569" font-family="Arial, sans-serif" font-size="11">Renew</text>
+            <text x="555" y="138" fill="#dc2626" font-family="Arial, sans-serif" font-size="11">↑ Click "Manage" next to your domain</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — Domain List. Click the <em>Manage</em> button on the row for your new domain.</div>
+      </div>
+    </div>
+
+    <!-- ================================================
+    STEP 3: APEX A RECORDS
+    ================================================ -->
+    <h2 id="s3">Step 3 — Add Four A Records (for yourdomain.com)</h2>
+
+    <div class="plain-english">
+      <strong>💡 What's an "A record"? In plain English:</strong>
+      <p>An A record is one entry in the internet's phone book that says: "When someone types <em>yourbusiness.com</em>, send them to this server." We're adding four of them because GitHub Pages uses four servers for reliability — if one is down, the others handle your traffic.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
-        <div class="step-num">4</div>
-        <h3>Complete your purchase</h3>
+        <div class="step-num">1</div>
+        <h3>Open Advanced DNS</h3>
       </div>
-      <p>Review what's in your cart — it should show your domain name and the yearly price. Click <span class="click">Confirm Order</span>.</p>
-      <p>You'll be asked for payment. You can use any credit or debit card. Fill in your card details and click <span class="click">Pay Now</span>.</p>
-      <p>Once payment goes through, you'll see a confirmation page. Write down (or take a screenshot of) your domain name — you're all set!</p>
+      <p>On the domain management page (where you clicked <em>Manage</em>), click the <span class="click">Advanced DNS</span> tab at the top.</p>
+
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">ap.namecheap.com/domains/list/yourbusiness.com/advancedns</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Namecheap Advanced DNS tab">
+            <rect width="700" height="220" fill="#fff"/>
+            <rect x="0" y="0" width="700" height="40" fill="#fff" stroke="#e2e8f0"/>
+            <text x="20" y="26" fill="#0e1626" font-family="Arial, sans-serif" font-size="14" font-weight="700">yourbusiness.com</text>
+            <g font-family="Arial, sans-serif" font-size="12">
+              <rect x="180" y="10" width="120" height="32" fill="#0e1626" rx="4 4 0 0"/>
+              <text x="206" y="30" fill="#fff">Advanced DNS</text>
+              <text x="320" y="30" fill="#475569">Redirect</text>
+              <text x="400" y="30" fill="#475569">Nameservers</text>
+            </g>
+            <rect x="20" y="60" width="660" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+            <text x="40" y="86" fill="#111" font-family="Arial, sans-serif" font-size="13" font-weight="700">HOST RECORDS</text>
+            <text x="220" y="86" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Add records here ↓</text>
+            <rect x="40" y="130" width="600" height="60" rx="4" fill="#fff" stroke="#e2e8f0"/>
+            <text x="60" y="155" fill="#475569" font-family="Arial, sans-serif" font-size="12">Type | Host | Value | TTL</text>
+            <text x="60" y="178" fill="#111" font-family="Arial, sans-serif" font-size="13">A Record | @ | 185.199.108.153 | Automatic</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — The <em>Advanced DNS</em> tab. The HOST RECORDS section is where you'll add entries.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <h3>Delete any pre-existing A records (only A records — leave everything else)</h3>
+      </div>
+      <p>Namecheap sometimes adds default A records for new domains (they point to parking pages). Find them in the HOST RECORDS list — the <strong>Type</strong> column will say "A Record". Click the red trash 🗑️ icon next to each one.</p>
+      <div class="warn-box">
+        <strong>⚠️ Only delete A records. Don't touch CNAME, MX, NS, or TXT records.</strong>
+        <p>If you see CNAME, MX (mail), NS (nameservers), or TXT records, leave them alone — they belong to Namecheap's email/DNS setup.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <h3>Add four new A records (one at a time)</h3>
+      </div>
+      <p>Click <span class="click">Add New Record</span> four times, creating one record per click with these values:</p>
+
+      <table class="dns-table">
+        <thead>
+          <tr><th>Type</th><th>Host</th><th>Value</th><th>TTL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A Record</td><td><code>@</code></td><td><code>185.199.108.153</code></td><td>Automatic</td></tr>
+          <tr><td>A Record</td><td><code>@</code></td><td><code>185.199.109.153</code></td><td>Automatic</td></tr>
+          <tr><td>A Record</td><td><code>@</code></td><td><code>185.199.110.153</code></td><td>Automatic</td></tr>
+          <tr><td>A Record</td><td><code>@</code></td><td><code>185.199.111.153</code></td><td>Automatic</td></tr>
+        </tbody>
+      </table>
+
+      <p>For each row: <strong>Type</strong> = "A Record", <strong>Host</strong> = the symbol <code>@</code> (one character, not a value), <strong>Value</strong> = one of the four IP addresses above, <strong>TTL</strong> = "Automatic". Click the green ✔ save icon at the right of each row before adding the next.</p>
+
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">ap.namecheap.com/.../advancedns</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four A records filled in">
+            <rect width="700" height="220" fill="#fff"/>
+            <rect x="20" y="20" width="660" height="180" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+            <text x="40" y="48" fill="#111" font-family="Arial, sans-serif" font-size="13" font-weight="700">HOST RECORDS</text>
+            <g font-family="Arial, sans-serif" font-size="12" fill="#111">
+              <rect x="40" y="60" width="600" height="24" fill="#fff"/>
+              <text x="50" y="77">A Record</text>
+              <text x="160" y="77">@</text>
+              <text x="220" y="77">185.199.108.153</text>
+              <text x="430" y="77">Automatic</text>
+              <text x="560" y="77" fill="#5db849">✔</text>
+              <rect x="40" y="84" width="600" height="24" fill="#f8fafc"/>
+              <text x="50" y="101">A Record</text>
+              <text x="160" y="101">@</text>
+              <text x="220" y="101">185.199.109.153</text>
+              <text x="430" y="101">Automatic</text>
+              <text x="560" y="101" fill="#5db849">✔</text>
+              <rect x="40" y="108" width="600" height="24" fill="#fff"/>
+              <text x="50" y="125">A Record</text>
+              <text x="160" y="125">@</text>
+              <text x="220" y="125">185.199.110.153</text>
+              <text x="430" y="125">Automatic</text>
+              <text x="560" y="125" fill="#5db849">✔</text>
+              <rect x="40" y="132" width="600" height="24" fill="#f8fafc"/>
+              <text x="50" y="149">A Record</text>
+              <text x="160" y="149">@</text>
+              <text x="220" y="149">185.199.111.153</text>
+              <text x="430" y="149">Automatic</text>
+              <text x="560" y="149" fill="#5db849">✔</text>
+            </g>
+            <text x="350" y="184" fill="#475569" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">↑ Four rows, all with Host = <code>@</code>, Type = A Record</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — All four A records added. Each IP address points to one of GitHub's servers.</div>
+      </div>
 
       <div class="ok-box">
-        <strong>✅ Congratulations — you now own your domain!</strong>
-        <p>Take a moment to write down your domain name somewhere safe. You'll need it for the next steps.</p>
+        <strong>✅ Why four IPs?</strong>
+        <p>GitHub Pages runs on four servers (108, 109, 110, 111). Adding all four means your site stays online even if one of them has a hiccup. They share the same content, so visitors see no difference.</p>
       </div>
     </div>
 
     <!-- ================================================
-    STEP 2: FIND YOUR DOMAIN IN NAMECHEAP
+    STEP 4: WWW CNAME
     ================================================ -->
-    <h2>Step 2 — Find Your Domain in Namecheap</h2>
+    <h2 id="s4">Step 4 — Add a CNAME Record (for www.yourdomain.com)</h2>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">1</div>
-        <h3>Log into Namecheap</h3>
+        <h3>Click "Add New Record" one more time</h3>
       </div>
-      <p>Go to <strong>namecheap.com</strong> and click <span class="click">Log In</span> in the top right. Enter your email and password.</p>
+      <p>Still in the HOST RECORDS section, click <span class="click">Add New Record</span> one final time.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">2</div>
-        <h3>Open your Domain List</h3>
+        <h3>Fill in the CNAME record</h3>
       </div>
-      <p>Once you're logged in, look at the top navigation bar. You'll see a menu that looks like this:</p>
-      <div class="click-box">
-        <p><span class="menu-path">Dashboard ▾</span> — click this</p>
-        <p>A dropdown menu will appear — click <span class="click">Domain List</span></p>
-      </div>
+      <p>This step handles visitors who type <em>www.yourbusiness.com</em> (with the <code>www.</code> prefix):</p>
 
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">📋</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">A list of all your purchased domains. Find the one you want to connect — it will look like "yourbusiness.com".</div>
-      </div>
+      <table class="dns-table">
+        <thead><tr><th>Type</th><th>Host</th><th>Value</th><th>TTL</th></tr></thead>
+        <tbody>
+          <tr><td>CNAME Record</td><td><code>www</code></td><td><code>12807889163.github.io.</code></td><td>Automatic</td></tr>
+        </tbody>
+      </table>
 
-      <p>Find your domain name in the list and click the <span class="click">Manage</span> button next to it (it might be under a "..." more menu).</p>
-    </div>
+      <p>Type = "CNAME Record", Host = <code>www</code>, Value = <code>12807889163.github.io.</code> (note the trailing dot — it must be there), TTL = Automatic.</p>
 
-    <!-- ================================================
-    STEP 3: SET UP DNS RECORDS
-    ================================================ -->
-    <h2>Step 3 — Set Up Your DNS Records</h2>
-
-    <div class="plain-english">
-      <strong>💡 What is DNS? Let me explain in plain English:</strong>
-      <p>DNS is like the phone book of the internet. When someone types <em>yourbusiness.com</em> into their browser, DNS tells the internet where to find your website. We're going to set up two "listings" in that phone book so visitors can find your site.</p>
-    </div>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">1</div>
-        <h3>Go to Advanced DNS settings</h3>
-      </div>
-      <p>While on the domain management page, look for a tab called <span class="click">Advanced DNS</span>. Click it.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">⚙️</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">A page with several sections including "HOST RECORDS", "EMAIL RECORDS", and "URL FORWARDING". We're working in the HOST RECORDS section.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">2</div>
-        <h3>Delete any existing A records (if present)</h3>
-      </div>
-      <p>Look in the <strong>HOST RECORDS</strong> section. Sometimes Namecheap adds default A records for you — we need to remove those first.</p>
-      <p>Next to each existing A record, you'll see a <span class="click">Delete</span> button (trash icon 🗑️). Click it for every A record you see.</p>
       <div class="warn-box">
-        <strong>⚠️ Don't delete CNAME records — only delete A records for now.</strong>
-        <p>If you're not sure which are A records, look at the "Type" column — it will say "A" for A records. Leave everything else alone.</p>
+        <strong>⚠️ Spelled exactly right</strong>
+        <p>The Value field must be exactly <code>12807889163.github.io.</code> with a period at the end. If it's missing the period, the CNAME won't resolve. If any digit is wrong, the site won't load.</p>
+      </div>
+
+      <div class="ok-box">
+        <strong>✅ DNS records are set!</strong>
+        <p>All five records (4 A + 1 CNAME) are saved. DNS changes typically take <strong>10 to 30 minutes</strong> to fully propagate, but it can be as fast as 5 minutes or as slow as 48 hours. Don't worry — your site will appear eventually.</p>
+      </div>
+    </div>
+
+    <!-- ================================================
+    STEP 5: ASK FOR GITHUB ACCESS
+    ================================================ -->
+    <h2 id="s5">Step 5 — Tell Us You're Ready (we'll add you to GitHub)</h2>
+
+    <div class="intro-box">
+      <p><strong>Important — please reply to your delivery email before doing Step 6.</strong> GitHub requires us to invite you to the repository by your email address. Once you reply, John will send the invite within a few business hours (usually much faster).</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <h3>Find the email about your website delivery</h3>
+      </div>
+      <p>Look in your inbox for an email from Orange Agency with a subject line that starts with "<em>Your website is ready</em>" or "<em>Welcome to Orange Agency</em>". It will have your business name and a link to the live preview.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <h3>Hit Reply and tell us your domain</h3>
+      </div>
+      <p>Reply to that email with a message like:</p>
+      <div class="click-box">
+        <p><em>"Hi, I'd like to connect my domain to the site. My domain is <strong>yourbusiness.com</strong> and I've set up the DNS records. Please add me to the GitHub repo so I can finish the setup."</em></p>
+      </div>
+
+      <div class="warn-box">
+        <strong>⏰ Why reply first?</strong>
+        <p>GitHub doesn't let us just hand over the site — they require the original account owner to invite you as a collaborator. We can only send that invite after we know which email address to send it to. So: <strong>reply first, then wait for the invite</strong>. We'll usually send it within a few hours during business days.</p>
       </div>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">3</div>
-        <h3>Add a CNAME record (for www.yourdomain.com)</h3>
+        <h3>Create a free GitHub account (if you don't have one)</h3>
       </div>
-      <p>A CNAME record tells the internet: "When someone visits <em>www.yourbusiness.com</em>, send them to my website."</p>
-      <p>Look for a button that says <span class="click">Add New Record</span>. Click it, then fill in these three fields:</p>
-      <div class="click-box">
-        <p><span class="click">Type</span> — click the dropdown and select <strong>CNAME</strong></p>
-        <p><span class="click">Host</span> — type <strong>www</strong></p>
-        <p><span class="click">Value</span> — type <strong>12807889163.github.io</strong></p>
-        <p><span class="click">TTL</span> — leave as <strong>Automatic</strong></p>
-      </div>
-      <p>Then click <span class="click">Save All Changes</span>.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">📝</div>
-        <div class="sc-title">What the filled-in record should look like</div>
-        <div class="sc-desc">Type: CNAME | Host: www | Value: 12807889163.github.io | TTL: Automatic</div>
-      </div>
+      <p>If you don't already have a GitHub account, go to <strong>github.com/signup</strong> and create one — it's free.</p>
+      <p><strong>Use the same email address</strong> that you replied to us with. GitHub won't let you accept the invite otherwise.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">4</div>
-        <h3>Add an ALIAS record (for yourdomain.com — the root)</h3>
+        <h3>Accept the GitHub invitation</h3>
       </div>
-      <p>This step makes sure visitors who type <em>yourbusiness.com</em> (without the "www") also end up at your website.</p>
-      <p>Click <span class="click">Add New Record</span> again, then:</p>
-      <div class="click-box">
-        <p><span class="click">Type</span> — click the dropdown and select <strong>ALIAS</strong></p>
-        <p><span class="click">Host</span> — type the symbol <strong>@</strong> (just the one character — no quotes)</p>
-        <p><span class="click">Value</span> — type <strong>12807889163.github.io</strong></p>
-        <p><span class="click">TTL</span> — leave as <strong>Automatic</strong></p>
-      </div>
-      <p>Then click <span class="click">Save All Changes</span>.</p>
+      <p>Within a few hours of your reply, you'll get an email from <strong>GitHub</strong> with subject "<em>[GitHub] You've been invited to join 12807889163/localbiz-previews</em>". Open it and click <span class="click">Accept Invitation</span>.</p>
 
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">📝</div>
-        <div class="sc-title">What the filled-in ALIAS record should look like</div>
-        <div class="sc-desc">Type: ALIAS | Host: @ | Value: 12807889163.github.io | TTL: Automatic</div>
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">github.com/12807889163/localbiz-previews</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub repo settings tab">
+            <rect width="700" height="200" fill="#0d1117"/>
+            <rect x="0" y="0" width="700" height="40" fill="#161b22"/>
+            <text x="20" y="26" fill="#58a6ff" font-family="Arial, sans-serif" font-size="13">12807889163 / localbiz-previews</text>
+            <g font-family="Arial, sans-serif" font-size="12">
+              <text x="380" y="26" fill="#c9d1d9">Code</text>
+              <text x="430" y="26" fill="#c9d1d9">Issues</text>
+              <text x="490" y="26" fill="#c9d1d9">Pull requests</text>
+              <rect x="580" y="10" width="80" height="24" fill="#21262d" rx="4"/>
+              <text x="600" y="26" fill="#c9d1d9">Settings</text>
+            </g>
+            <text x="20" y="80" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="14" font-weight="700">Website repository</text>
+            <text x="20" y="106" fill="#8b949e" font-family="Arial, sans-serif" font-size="12">/ yourdomain.com / yourdomain.com/contact.html</text>
+            <text x="350" y="160" fill="#58a6ff" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">↑ Click the "Settings" tab to continue</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — Once you accept the invite, you'll land on this page. Click <em>Settings</em> at the top.</div>
+      </div>
+    </div>
+
+    <!-- ================================================
+    STEP 6: CUSTOM DOMAIN IN GITHUB
+    ================================================ -->
+    <h2 id="s6">Step 6 — Add Your Custom Domain in GitHub Pages</h2>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <h3>Open the Pages settings</h3>
+      </div>
+      <p>In the left sidebar of the Settings page, scroll down to the section called <span class="click">Pages</span> and click it.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <h3>Enter your custom domain</h3>
+      </div>
+      <p>Under "Custom domain", type your domain name — for example, <strong>yourbusiness.com</strong>. Then click <span class="click">Save</span>.</p>
+
+      <div class="shot">
+        <div class="shot-header">
+          <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
+          <span class="shot-url">github.com/.../settings/pages</span>
+        </div>
+        <div class="shot-body">
+          <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub Pages custom domain field">
+            <rect width="700" height="260" fill="#0d1117"/>
+            <text x="20" y="36" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="16" font-weight="700">GitHub Pages</text>
+            <text x="20" y="56" fill="#8b949e" font-family="Arial, sans-serif" font-size="12">Build and deploy your site's static files</text>
+            <rect x="20" y="80" width="660" height="48" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="40" y="110" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="13">Custom domain</text>
+            <rect x="280" y="92" width="280" height="28" rx="4" fill="#0d1117" stroke="#58a6ff"/>
+            <text x="296" y="112" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="13">yourbusiness.com</text>
+            <rect x="568" y="92" width="80" height="28" rx="4" fill="#21262d"/>
+            <text x="595" y="111" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="12" font-weight="600">Save</text>
+            <rect x="20" y="150" width="660" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="40" y="175" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="13">Enforce HTTPS</text>
+            <rect x="600" y="160" width="40" height="20" rx="4" fill="#238636"/>
+            <text x="616" y="175" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="700">✓ ON</text>
+            <text x="350" y="220" fill="#8b949e" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">↑ Type your domain, click Save, then turn on Enforce HTTPS</text>
+          </svg>
+        </div>
+        <div class="shot-caption"><strong>Example UI</strong> — Custom domain field + Enforce HTTPS toggle. Both need to be set.</div>
       </div>
 
       <div class="warn-box">
-        <strong>⚠️ Don't see "ALIAS" in the Type dropdown?</strong>
-        <p>Some Namecheap accounts don't have ALIAS as an option. If that's the case, scroll down to the <strong>URL FORWARDING</strong> section instead. Set it up like this:</p>
-        <p>Source: <strong>@</strong> (just the @ symbol) → Destination: <strong>http://www.yourbusiness.com</strong> → 301 (Permanent) redirect</p>
+        <strong>⚠️ DNS check might show yellow at first — that's normal</strong>
+        <p>Right after you click Save, GitHub will probe your DNS to make sure the records are in place. If you just added them, the probe can fail with a yellow warning for the first 10–30 minutes. Wait, then refresh — it'll go green.</p>
       </div>
-    </div>
-
-    <div class="ok-box">
-      <strong>✅ DNS records are set!</strong>
-      <p>Your changes are saved. It can take anywhere from <strong>10 minutes to 48 hours</strong> for these changes to spread across the internet. Most of the time it's fast — but don't worry if it takes a couple hours.</p>
     </div>
 
     <!-- ================================================
-    STEP 4: GET GITHUB ACCESS
+    STEP 7: HTTPS
     ================================================ -->
-    <h2>Step 4 — Get Access to the GitHub Repository</h2>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">1</div>
-        <h3>Reply to your delivery confirmation email</h3>
-      </div>
-      <p>Look in your email inbox for a message from Orange Agency with the subject line about your website delivery. <strong>Reply to that email</strong> and let us know you'd like your custom domain connected.</p>
-      <p>Write something like: <em>"Hi, I'd like to connect my domain. My domain is yourbusiness.com. Please add me to GitHub so I can set it up."</em></p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">📧</div>
-        <div class="sc-title">What you're looking for</div>
-        <div class="sc-desc">An email from Orange Agency — it will mention your website delivery. Just hit Reply and ask to be added to the GitHub repository.</div>
-      </div>
-
-      <p>We'll send you an invitation to join the GitHub repository within a few hours. <strong>Open the email and click the "Accept Invitation" button.</strong></p>
-    </div>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">2</div>
-        <h3>Create a free GitHub account (if needed)</h3>
-      </div>
-      <p>If you don't already have a GitHub account, you'll need to create one — it's free.</p>
-      <p>Go to <strong>github.com</strong> and click <span class="click">Sign up</span>. Fill in your email, create a password, and pick a username.</p>
-      <p>After signing up, GitHub will send you a verification email — open it and click the link to verify your email address.</p>
-      <p>Once you've verified, go back to the GitHub invitation email and click <span class="click">Accept Invitation</span>. This will take you to the website repository.</p>
-    </div>
-
-    <!-- ================================================
-    STEP 5: ADD DOMAIN IN GITHUB
-    ================================================ -->
-    <h2>Step 5 — Connect Your Domain in GitHub</h2>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">1</div>
-        <h3>Go to the repository settings</h3>
-      </div>
-      <p>After accepting the GitHub invitation, you should be on the website repository page. It will look something like <strong>github.com/12807889163/localbiz-previews</strong>.</p>
-      <p>At the top of the page, click the <span class="click">Settings</span> tab.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">⚙️</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">The repository page. Settings is at the top in the grey navigation bar, next to "Actions", "Projects", etc.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">2</div>
-        <h3>Find the Pages section</h3>
-      </div>
-      <p>In the left-hand sidebar of Settings, scroll down until you see a section called <span class="click">Pages</span>. Click on it.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">📄</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">The Pages settings page. It will say "GitHub Pages" at the top with a subtitle about enabling pages.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-header">
-        <div class="step-num">3</div>
-        <h3>Enter your custom domain</h3>
-      </div>
-      <p>Look for a field called <strong>Custom domain</strong> (it will be a text input box).</p>
-      <p>Type your domain name there — for example: <strong>yourbusiness.com</strong></p>
-      <p>Then click <span class="click">Save</span>.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">🌐</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">The Custom domain field filled in with something like "yourbusiness.com". There's a blue Save button to the right.</div>
-      </div>
-
-      <p>GitHub will automatically check if your DNS is set up correctly. This check might show a yellow warning at first — that's normal. It means DNS hasn't fully propagated yet. Give it 10–30 minutes and check again.</p>
-    </div>
-
-    <!-- ================================================
-    STEP 6: ENABLE HTTPS
-    ================================================ -->
-    <h2>Step 6 — Enable HTTPS (Secure the Site)</h2>
+    <h2 id="s7">Step 7 — Enable HTTPS (the Padlock)</h2>
 
     <div class="plain-english">
-      <strong>💡 What is HTTPS? In plain English:</strong>
-      <p>HTTPS is what puts the little padlock 🔒 in your browser's address bar. It means the connection between your visitor's browser and your website is private and secure. Without it, browsers show a "Not Secure" warning — which you definitely don't want!</p>
+      <strong>💡 What's HTTPS? In plain English:</strong>
+      <p>HTTPS is what puts the little padlock 🔒 in your browser's address bar. Without it, browsers show a "Not Secure" warning next to your URL — which makes visitors nervous. Turning it on gets you a free SSL certificate from Let's Encrypt (a free certificate authority) and makes your site look professional.</p>
     </div>
 
     <div class="step-card">
       <div class="step-header">
         <div class="step-num">1</div>
-        <h3>Check the "Enforce HTTPS" box</h3>
+        <h3>Tick the "Enforce HTTPS" checkbox</h3>
       </div>
-      <p>You're still on the GitHub Pages settings page from Step 5. Below the custom domain field, look for a checkbox that says <strong>"Enforce HTTPS"</strong>.</p>
-      <p>Click the checkbox so it's ticked ✅.</p>
-
-      <div class="screenshot-placeholder">
-        <div class="sc-icon">🔒</div>
-        <div class="sc-title">What you should see</div>
-        <div class="sc-desc">A checkbox labeled "Enforce HTTPS" — it will be below or next to the Custom domain field. Make sure it's checked/ticked.</div>
-      </div>
-
-      <p>GitHub will automatically get a free SSL certificate (that's the padlock 🔒) for your domain. This can take anywhere from <strong>5 minutes to 24 hours</strong>.</p>
+      <p>On the same GitHub Pages settings page, scroll down and tick the box that says <strong>"Enforce HTTPS"</strong>.</p>
+      <p>GitHub will automatically request a free SSL certificate for your domain. This can take anywhere from <strong>5 minutes to 24 hours</strong>, but it's almost always under 30 minutes.</p>
 
       <div class="ok-box">
         <strong>✅ You're all done!</strong>
-        <p>Once HTTPS is active, your website will be live at <strong>https://yourbusiness.com</strong>. No more "not secure" warnings — just a clean, professional site your customers will trust.</p>
+        <p>Once HTTPS is active, your website is live at <strong>https://yourbusiness.com</strong>. The padlock will show in visitors' browsers, and the site will work on every device. Tell your customers, share it on Google Business Profile, and you're in business.</p>
       </div>
     </div>
 
     <!-- ================================================
     TROUBLESHOOTING
     ================================================ -->
-    <h2>Troubleshooting — "It Doesn't Work Yet"</h2>
+    <h2 id="s8">Troubleshooting — "It Doesn't Work Yet"</h2>
 
-    <p style="margin-bottom: 16px;">Here's what to check if you've finished all the steps but your site isn't showing up yet:</p>
+    <p style="margin-bottom: 16px;">Most issues are DNS propagation (just wait 30 more minutes). Here's a checklist of other things to verify:</p>
 
     <div class="ts-item">
       <h4>🔴 "GitHub says DNS check failed"</h4>
-      <p>Wait 10–30 minutes and try again. DNS changes can take time to propagate. If it still fails after an hour, double-check your DNS records match exactly what we wrote in Step 3 — especially the spelling of <strong>12807889163.github.io</strong>.</p>
+      <p>Wait 10–30 minutes and check again. If it still fails after an hour, open your Namecheap Advanced DNS page and compare your A records to <code>185.199.108.153</code>, <code>185.199.109.153</code>, <code>185.199.110.153</code>, <code>185.199.111.153</code> exactly — no typos.</p>
     </div>
 
     <div class="ts-item">
-      <h4>🔴 "I see a GitHub 404 error"</h4>
-      <p>This usually means the domain was saved in GitHub before DNS fully propagated. Go back to Settings → Pages, delete the custom domain, click Save, wait 2 minutes, then re-enter it and save again.</p>
+      <h4>🔴 "I see a GitHub 404 page"</h4>
+      <p>Usually means you saved the custom domain in GitHub before the DNS fully propagated. Go to Settings → Pages, delete the custom domain, click Save, wait 5 minutes, then re-enter it and save again.</p>
     </div>
 
     <div class="ts-item">
-      <h4>🔴 "My site loads but shows 'Not Secure'"</h4>
-      <p>Go back to Settings → Pages and make sure the "Enforce HTTPS" checkbox is ticked. If it is, wait — it can take up to 24 hours for the SSL certificate to activate after you first enable it.</p>
+      <h4>🔴 "Site loads but shows 'Not Secure'"</h4>
+      <p>Check the Enforce HTTPS box in GitHub Pages settings. If it's already on, give it up to 24 hours — the SSL certificate can take time to provision on first setup.</p>
     </div>
 
     <div class="ts-item">
       <h4>🔴 "www.yourbusiness.com works but yourbusiness.com doesn't"</h4>
-      <p>The ALIAS record for @ didn't take. Go back to Namecheap → Advanced DNS and check that the ALIAS record (or URL forwarding rule) is still there. If it's gone, re-add it following Step 3, Step 4.</p>
+      <p>The four A records aren't all there. Open Namecheap → Advanced DNS and confirm you have four rows with Type "A Record", Host "@", and Values ending in .108.153, .109.153, .110.153, and .111.153.</p>
+    </div>
+
+    <div class="ts-item">
+      <h4>🔴 "I never got the GitHub invite email"</h4>
+      <p>Check your spam folder. If it's not there after 4 hours, reply to your delivery email again — sometimes the invite bounces silently.</p>
     </div>
 
     <div class="ts-item">
       <h4>🔴 "I've waited 48 hours and nothing works"</h4>
-      <p>Reply to your delivery confirmation email and let us know. We'll help you figure out what's wrong — at no extra charge. That's what we do.</p>
+      <p>Reply to your delivery email and let us know. We'll help you figure out what's wrong — at no extra charge. That's what we do.</p>
+    </div>
+
+    <div class="ts-item">
+      <h4>🔴 "I bought the domain somewhere else (GoDaddy, Cloudflare, Google Domains)"</h4>
+      <p>The four A records + one CNAME work everywhere. Just open your registrar's DNS settings page instead of Namecheap's. The exact button names vary, but the values are the same.</p>
     </div>
 
     <div class="contact-box">
