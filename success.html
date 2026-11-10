@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment received — Orange Agency</title>
+  <meta name="robots" content="noindex">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #334155; line-height: 1.6; }
+    .container { max-width: 640px; margin: 56px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+    .header { background: linear-gradient(135deg, #22c55e, #15803d); padding: 44px 48px; text-align: center; }
+    .header .icon { font-size: 46px; line-height: 1; margin-bottom: 12px; }
+    .header h1 { color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .header p { color: rgba(255,255,255,0.9); font-size: 15px; }
+    .body { padding: 40px 48px; }
+    .body h2 { font-size: 18px; color: #0f172a; margin-bottom: 14px; }
+    .body ol { margin-left: 22px; }
+    .body li { margin-bottom: 10px; font-size: 15px; }
+    .note { background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; color: #0369a1; }
+    .note strong { display: block; font-size: 15px; margin-bottom: 4px; }
+    .btn-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, #0ea5e9, #0369a1); color: #fff; }
+    .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(14,165,233,0.4); }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: 1.5px solid #e2e8f0; }
+    .btn-secondary:hover { background: #e2e8f0; }
+    .footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 48px; text-align: center; }
+    .footer p { font-size: 13px; color: #94a3b8; }
+    .footer a { color: #0ea5e9; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) { .container { margin: 0; border-radius: 0; } .body, .header { padding: 28px 24px; } .footer { padding: 16px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="icon">&#10003;</div>
+      <h1>Payment received</h1>
+      <p>You're in. Here's what happens next.</p>
+    </div>
+    <div class="body">
+      <h2>What happens now</h2>
+      <ol>
+        <li>I've got your order and payment confirmation.</li>
+        <li>Fill in the short intake form below so I have your logo, services, photos, phone number and the area you serve.</li>
+        <li>I build your site and send you a preview link, usually the same day.</li>
+        <li>You tell me what to change, I make the edits, and we go live on your domain.</li>
+      </ol>
+      <div class="note">
+        <strong>One thing I need from you</strong>
+        The intake form takes about 5 to 10 minutes. It locks in your logo, your services, your photos and your About copy. I can't start the build without it, and if it isn't back within a day I'll text you a nudge.
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" id="intakeLink" href="/localbiz-previews/info-form/">Open your intake form &rarr;</a>
+        <a class="btn btn-secondary" href="mailto:john@orangeagency.media?subject=Website%20order">Email me a question</a>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Orange Agency &middot; <a href="mailto:john@orangeagency.media">john@orangeagency.media</a> &middot; <a href="https://calendly.com/orange-agency/intake-intro">Book a 15-min intro call</a></p>
+    </div>
+  </div>
+  <script>
+    // Carry the business + email through from the Stripe redirect so the
+    // intake form opens pre-filled.
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var biz = p.get('business') || p.get('slug') || '';
+      var email = p.get('email') || '';
+      var a = document.getElementById('intakeLink');
+      if (!a) return;
+      var u = new URL(a.getAttribute('href'), window.location.origin);
+      if (biz) u.searchParams.set('business', biz);
+      if (email) u.searchParams.set('email', email);
+      a.setAttribute('href', u.toString());
+    })();
+  </script>
+</body>
+</html>
